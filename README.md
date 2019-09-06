@@ -4,7 +4,7 @@
 <hr> 
 
 ## Sobre
-  O projeto "Ufla-News" tem como objetivo a construção de um aplicação mobile android que funcione como meio divulgador de boletins eletrônicos emitidos por diferentes entidades que compõem a Ufla como a incubadora de empresas tecnológicas (INBATEC), a pró-reitoritra de gradução (PRG), o restaurante úniversitário (RU), entre outros. Atuando principalmente de forma a facilitar a divulgação, acesso e organização desses boletins, o aplciativo também dispõe de um ambiente de interação social de forma análoga ao encontrado em redes sociais conhecidas como youtube, twitter e facebook.
+  O projeto "Ufla-News" tem como objetivo a construção de uma aplicação mobile android que funcione como meio divulgador de boletins eletrônicos emitidos por diferentes entidades que compõem a Ufla como a incubadora de empresas tecnológicas (INBATEC), a pró-reitoritra de gradução (PRG), o restaurante úniversitário (RU), entre outros. Atuando principalmente de forma a facilitar a divulgação, acesso e organização desses boletins, o aplciativo também dispõe de um ambiente de interação social de forma análoga ao encontrado em redes sociais conhecidas como youtube, twitter e facebook.
 
 ## Equipe
 
