@@ -12,7 +12,7 @@
 | ------------- |:-------------:|:-------------:|
 | Isabella Nascimento   | @isabelamn07 |  Product Owner/Desenvolvedora |
 | Filipe Rodrigues     | @Filipe-Rodrigues      |  Scrum Master/Desenvolvedor |
-| Márcio Inácio | @M4rc1o     |  Desenvovledor  |
+| Márcio Inácio | @M4rc1o     |  Desenvolvedor  |
 | Tarik Santigo| @Tarik-INC    |   Scrum Master/Desenvolvedor |
-| Ricardo Caldeira| @Ricardo Caldeira     |  Desenvovledor |
+| Ricardo Caldeira| @Ricardo Caldeira     |  Desenvolvedor |
 
