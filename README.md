@@ -10,7 +10,7 @@
 
 | Nome       | Username         | Função  |
 | ------------- |:-------------:|:-------------:|
-| Isabella Nascimento   | @isabelamn07 |  Product Owner/Desenvolvedora |
+| Isabela Nascimento   | @isabelamn07 |  Product Owner/Desenvolvedora |
 | Filipe Rodrigues     | @Filipe-Rodrigues      |  Scrum Master/Desenvolvedor |
 | Márcio Inácio | @M4rc1o     |  Desenvolvedor  |
 | Tarik Santigo| @Tarik-INC    |   Scrum Master/Desenvolvedor |
