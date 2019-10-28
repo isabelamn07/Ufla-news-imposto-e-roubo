@@ -1,6 +1,15 @@
-.welcome-card {
+.bulletin-card {
   img {
     max-height: 20vh;
     overflow: hidden;
   }
+ 
+  .social-buttons {
+    display: flex;
+    justify-content: flex-start;
+  }
+}
+
+.title-page {
+  font-weight: bold;
 }
