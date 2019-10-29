@@ -13,10 +13,52 @@
   <ion-searchbar placeholder="Buscar publicação" cancelButtonIcon="close"></ion-searchbar>
   <div class="title-page">
     <ion-icon name="ios-paper" size="large" color="primary"></ion-icon>
-    <ion-text color="secondary" class="text">
+    <ion-text class="text">
       <h3>Boletins</h3>
     </ion-text>
   </div>
+  <ion-card no-padding class="sorting-card" >
+    <ion-card-header>
+      <ion-text color="white">
+        <h4>Ordenar por </h4>
+      </ion-text>
+    </ion-card-header>
+    <ion-card-content>
+        <ion-radio-group  [(ngModel)]="something" >
+            <ion-row>
+              <ion-col>
+                   <ion-item>
+                      <ion-label>Nome</ion-label>
+                      <ion-radio mode="md" item-left value="A" color="secondary"></ion-radio>
+                 </ion-item>
+               </ion-col>
+          
+              <ion-col>
+                  <ion-item>
+                      <ion-label>Data</ion-label>
+                      <ion-radio mode="md" item-left value="B" color="secondary"></ion-radio>
+                 </ion-item>
+              </ion-col>
+          
+              <ion-col>
+                  <ion-item>
+                      <ion-label>Favoritos</ion-label>
+                      <ion-radio mode="md" item-left value="C" color="secondary"></ion-radio>
+                 </ion-item>
+              </ion-col>
+          
+          </ion-row>
+          </ion-radio-group>
+        <!-- <ion-list>
+            <ion-radio-group>
+                <div class="options">
+                  <span>Biff</span>
+                  <ion-radio value="biff" checked></ion-radio>
+                </div>
+              </ion-radio-group>
+              </ion-list> -->
+    </ion-card-content>
+  </ion-card>
   <ion-card class="bulletin-card" text-center>
     <ion-grid>
       <ion-row>
@@ -44,7 +86,9 @@
             <ion-grid>
               <ion-row>
                 <ion-text>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem consequuntur nesciunt beatae natus, ut sapiente eius, accusantium temporibus nostrum repellendus ab nulla, sint excepturi suscipit commodi aliquam repudiandae harum sequi? </p>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem consequuntur nesciunt beatae
+                    natus, ut sapiente eius, accusantium temporibus nostrum repellendus ab nulla, sint excepturi
+                    suscipit commodi aliquam repudiandae harum sequi? </p>
                 </ion-text>
               </ion-row>
               <ion-row padding-top class="social-buttons">
