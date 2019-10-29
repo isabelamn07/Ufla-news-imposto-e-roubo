@@ -1,15 +1,55 @@
+$size-social-buttons: 22px;
+
 .bulletin-card {
-  img {
-    max-height: 20vh;
-    overflow: hidden;
-  }
- 
-  .social-buttons {
+  
+  // img {
+  //   max-height: 20vh;
+  //   overflow: hidden;
+  //   display: block;
+  // }
+  
+  .img-background {
     display: flex;
-    justify-content: flex-start;
+    background: url("/assets/praec_predio.jpg");
+    height: 20vh;
+    align-items: flex-end;
+    background-size: cover;
+  }
+
+  .social-buttons {
+    margin: 0 auto;
+    font-size: $size-social-buttons;
+    display: flex;
+    vertical-align: center;
+
+    
+    .like-button {
+      flex: 1;
+      vertical-align: -12px;
+      font-size: $size-social-buttons - 8px;
+    }
+
+    .dislike-button {
+      flex: 1;
+      vertical-align: -12px;
+      font-size: $size-social-buttons - 6px;
+    }
+
+    .comment-button {
+      flex: 1;
+      vertical-align: -12px;
+      font-size: $size-social-buttons - 8px;
+    }
   }
 }
 
 .title-page {
+  display: flex;
   font-weight: bold;
+  align-items: center;
+  justify-content: center;
+
+  .text {
+    margin-left: 5%;
+  }
 }

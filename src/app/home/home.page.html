@@ -11,14 +11,16 @@
 
 <ion-content>
   <ion-searchbar placeholder="Buscar publicação" cancelButtonIcon="close"></ion-searchbar>
-  <ion-item text-center lines="none">
-    <ion-text color="medium"><h3 class="title-page">Boletins</h3></ion-text>
-    <ion-icon name="book" size="large" color="primary" slot="start"></ion-icon>
-  </ion-item>
+  <div class="title-page">
+    <ion-icon name="ios-paper" size="large" color="primary"></ion-icon>
+    <ion-text color="secondary" class="text">
+      <h3>Boletins</h3>
+    </ion-text>
+  </div>
   <ion-card class="bulletin-card" text-center>
     <ion-grid>
       <ion-row>
-        <img src="/assets/praec_predio.jpg" alt="Imagem do predio da praec localizado na UFLA">
+        <!-- <img src="/assets/praec_predio.jpg" alt="Imagem do predio da praec localizado na UFLA"> -->
       </ion-row>
       <ion-row>
         <ion-col>
@@ -34,26 +36,49 @@
         </ion-col>
       </ion-row>
       <ion-row>
+        <ion-col class="img-background"> </ion-col>
+      </ion-row>
+      <ion-row>
         <ion-col>
           <ion-card-content>
             <ion-grid>
               <ion-row>
-                <p>Now that your app has been created, you'll want to start building out features and components. Check
-                  out
-                  some
-                  of the resources below for next steps.</p>
+                <ion-text>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem consequuntur nesciunt beatae natus, ut sapiente eius, accusantium temporibus nostrum repellendus ab nulla, sint excepturi suscipit commodi aliquam repudiandae harum sequi? </p>
+                </ion-text>
               </ion-row>
-              <ion-row class="ion-padding-top">
+              <ion-row padding-top class="social-buttons">
                 <ion-col>
+                  <div>
+                    <span text-left>3</span>
+                    <ion-button class="like-button" shape="round" fill="none" no-padding>
+                      <ion-icon color="danger" name="heart" slot="icon-only"></ion-icon>
+                    </ion-button>
+                  </div>
                 </ion-col>
-                <ion-col class="social-buttons">
-                  <ion-item lines="none">
+                <ion-col>
+                  <div>
+                    <span>2</span>
+                    <ion-button class="dislike-button" shape="round" fill="none" no-padding>
+                      <ion-icon color="warning" name="heart-dislike" slot="icon-only"></ion-icon>
+                    </ion-button>
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div>
+                    <span>10</span>
+                    <ion-button class="comment-button" shape="round" fill="none" no-padding>
+                      <ion-icon color="secondary" src="/assets/icon/comment.svg" slot="icon-only"></ion-icon>
+                    </ion-button>
+                  </div>
+                </ion-col>
+                <!-- <ion-item lines="none">
                     <ion-label position="fixed">3</ion-label>
                     <ion-button fill="clear">
                       <ion-icon name="heart"></ion-icon>
                     </ion-button>
-                  </ion-item>
-                </ion-col>
+                  </ion-item> -->
+                <!-- </ion-col> -->
               </ion-row>
             </ion-grid>
           </ion-card-content>
