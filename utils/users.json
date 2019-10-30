@@ -1,0 +1,18 @@
+{
+	"users": [
+	  {
+		"id": 1,
+		"name": "Paulo Afonso",
+		"userID": "pauloafonso",
+		"senha": "1234",
+		"email": "paulo@email.com",
+	  },
+	  {
+		"id": 2,
+		"name": "Silvio Paulo",
+		"userID": "silviopaulo",
+		"senha": "4321",
+		"email": "silvio@email.com",
+	  }
+	]
+}
