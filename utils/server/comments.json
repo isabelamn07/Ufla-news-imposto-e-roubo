@@ -2,21 +2,21 @@
 	"comments": [
 	  {
 		"id": 1,
-        "user_id": 1,
-        "publication_id": 1,
-        "body": "Bacana! Vou me inscrever..."
+		"user_id": 1,
+		"publication_id": 1,
+		"body": "Bacana! Vou me inscrever..."
 	  },
-      {
-        "id": 2,
-        "user_id": 1,
-        "publication_id": 2,
-        "body": "Esse evento cresce todo ano, deve estar chamando bastante atenção do mercado!"
-      },
-      {
-        "id": 3,
-        "user_id": 2,
-        "publication_id": 2,
-        "body": "Não gostei, eles programaram o evento na semana da minha viagem ò_ó"
-      }
-    ]
+	  {
+		"id": 2,
+		"user_id": 1,
+		"publication_id": 2,
+		"body": "Esse evento cresce todo ano, deve estar chamando bastante atenção do mercado!"
+	  },
+	  {
+		"id": 3,
+		"user_id": 2,
+		"publication_id": 2,
+		"body": "Não gostei, eles programaram o evento na semana da minha viagem ò_ó"
+	  }
+	]
 }
