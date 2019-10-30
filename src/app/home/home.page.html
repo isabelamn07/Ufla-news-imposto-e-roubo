@@ -25,25 +25,25 @@
     </ion-card-header>
     <ion-card-content>
         <ion-radio-group  [(ngModel)]="something" >
-            <ion-row>
-              <ion-col>
-                   <ion-item>
-                      <ion-label>Nome</ion-label>
-                      <ion-radio mode="md" item-left value="A" color="secondary"></ion-radio>
+            <ion-row >
+              <ion-col >
+                   <ion-item class="option" color="secondary">
+                      <ion-label>Título</ion-label>
+                      <ion-radio mode="md" item-left value="A" color="primary"></ion-radio>
                  </ion-item>
                </ion-col>
           
               <ion-col>
-                  <ion-item>
-                      <ion-label>Data</ion-label>
-                      <ion-radio mode="md" item-left value="B" color="secondary"></ion-radio>
+                  <ion-item class="option" color="secondary">
+                      <ion-label text-wrap>Publicador </ion-label>
+                      <ion-radio mode="md" item-left value="B" color="primary"></ion-radio>
                  </ion-item>
               </ion-col>
           
               <ion-col>
-                  <ion-item>
-                      <ion-label>Favoritos</ion-label>
-                      <ion-radio mode="md" item-left value="C" color="secondary"></ion-radio>
+                  <ion-item class="option" color="secondary">
+                      <ion-label>Data de criaçao</ion-label>
+                      <ion-radio mode="md" item-left value="C" color="primary"></ion-radio>
                  </ion-item>
               </ion-col>
           
