@@ -10,10 +10,17 @@ $size-social-buttons: 22px;
   
   .img-background {
     display: flex;
-    background: url("/assets/praec_predio.jpg");
+    // background: url("/assets/praec_predio.jpg");
     height: 20vh;
     align-items: flex-end;
     background-size: cover;
+  }
+
+  .title {
+    
+    h2 {
+      font-weight: 600 !important ;
+    }
   }
 
   .social-buttons {

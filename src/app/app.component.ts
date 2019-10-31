@@ -17,7 +17,7 @@ export class AppComponent {
       icon: 'home'
     }
   ];
-
+  
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
