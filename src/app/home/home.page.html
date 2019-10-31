@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-searchbar placeholder="Buscar boletim" cancelButtonIcon="close" inputmode="text"></ion-searchbar>
+  <ion-searchbar placeholder="Buscar boletim por título" cancelButtonIcon="close" inputmode="text" animated (ionChange)="searchBoletim($event)"></ion-searchbar>
   <div class="title-page">
     <ion-icon name="ios-paper" size="large" color="primary"></ion-icon>
     <ion-text class="text">
@@ -24,27 +24,27 @@
       </ion-text>
     </ion-card-header>
     <ion-card-content>
-      <ion-radio-group [(ngModel)]="something">
+      <ion-radio-group (ionChange)="sortBoletim($event)">
         <ion-row>
 
           <ion-col>
             <ion-item class="option" color="secondary">
               <ion-label>Título</ion-label>
-              <ion-radio mode="md" item-left value="A" color="primary"></ion-radio>
+              <ion-radio mode="md" item-left value="titulo" color="primary"></ion-radio>
             </ion-item>
           </ion-col>
 
           <ion-col>
             <ion-item class="option" color="secondary">
               <ion-label text-wrap>Publicador </ion-label>
-              <ion-radio mode="md" item-left value="B" color="primary"></ion-radio>
+              <ion-radio mode="md" item-left value="publicador" color="primary"></ion-radio>
             </ion-item>
           </ion-col>
 
           <ion-col>
             <ion-item class="option" color="secondary">
-              <ion-label>Data de criaçao</ion-label>
-              <ion-radio mode="md" item-left value="C" color="primary"></ion-radio>
+              <ion-label>Data de publicação</ion-label>
+              <ion-radio mode="md" item-left value="data" color="primary"></ion-radio>
             </ion-item>
           </ion-col>
 
@@ -54,7 +54,7 @@
   </ion-card>
 
 
-<div *ngFor="let boletim of boletimList">
+<div *ngFor="let boletim of searchedBoletimList">
   <ion-card class="bulletin-card" text-center >
     <ion-grid>
       <ion-row>
@@ -64,8 +64,8 @@
               <img [src]="getIconUrl(boletim)" alt="" />
             </ion-thumbnail>
             <ion-card-header>
-              <ion-card-title> PRAEC </ion-card-title>
-              <ion-card-subtitle> Criado há 3 dias </ion-card-subtitle>
+              <ion-card-title> {{boletim.initials}} </ion-card-title>
+              <ion-card-subtitle> Divulgado em {{getFormatedDateAndDiff(boletim).date}} há {{getFormatedDateAndDiff(boletim).diff}} </ion-card-subtitle>
             </ion-card-header>
           </ion-item>
         </ion-col>
@@ -79,7 +79,8 @@
             <ion-grid>
               <ion-row>
                 <ion-text class="title">
-                  <h2>{{boletim.title}} </h2>
+                  <h2> {{boletim.name}} </h2>
+                  <h3> {{boletim.title}}</h3>
                 </ion-text>
               </ion-row>
               <ion-row padding-top class="social-buttons">

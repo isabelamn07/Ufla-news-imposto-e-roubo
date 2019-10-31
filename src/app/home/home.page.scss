@@ -11,14 +11,17 @@ $size-social-buttons: 22px;
   .img-background {
     display: flex;
     // background: url("/assets/praec_predio.jpg");
-    height: 20vh;
+    height: 25vh;
     align-items: flex-end;
     background-size: cover;
   }
 
   .title {
-    
+
     h2 {
+      font-weight: 600 !important ;
+    }
+    h3 {
       font-weight: 600 !important ;
     }
   }
@@ -32,7 +35,7 @@ $size-social-buttons: 22px;
     
     .like-button {
       flex: 1;
-      vertical-align: -12px;
+      vertical-align: -13px;
       font-size: $size-social-buttons - 8px;
     }
 
