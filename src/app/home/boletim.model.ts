@@ -1,3 +1,8 @@
+interface likes {
+    quantity: number,
+    usernameList: String[]
+}
+
 export interface Boletim {
     id: string,
     name: string,
@@ -6,11 +11,11 @@ export interface Boletim {
     icon: string,
     title: string,
     message: string,
-    likes: number,
-    dislikes: number,
+    likes: likes,
+    dislikes: Object,
     when: {
       milli: number;
       date: string
     },
     comments: String[]
-}
+};

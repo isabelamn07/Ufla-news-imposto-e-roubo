@@ -86,17 +86,17 @@
               <ion-row padding-top class="social-buttons">
                 <ion-col>
                   <div>
-                    <span text-left>{{boletim.likes}}</span>
-                    <ion-button class="like-button" shape="round" fill="none" no-padding>
-                      <ion-icon color="danger" name="heart" slot="icon-only"></ion-icon>
+                    <span text-left>{{boletim.likes.quantity}}</span>
+                    <ion-button class="like-button" shape="round" fill="none" no-padding (click)="registerUserLike(boletim)">
+                      <ion-icon [color]="getUserLike(boletim)? 'danger' : ''" name="heart" slot="icon-only" ></ion-icon>
                     </ion-button>
                   </div>
                 </ion-col>
                 <ion-col>
                   <div>
-                    <span>{{boletim.dislikes}}</span>
-                    <ion-button class="dislike-button" shape="round" fill="none" no-padding>
-                      <ion-icon color="warning" name="heart-dislike" slot="icon-only"></ion-icon>
+                    <span>{{boletim.dislikes.quantity}}</span>
+                    <ion-button class="dislike-button" shape="round" fill="none" no-padding (click)="registerUserDislike(boletim)">
+                      <ion-icon [color]="getUserDislike(boletim)? 'warning' : ''" name="heart-dislike" slot="icon-only"></ion-icon>
                     </ion-button>
                   </div>
                 </ion-col>
