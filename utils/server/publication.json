@@ -3,18 +3,23 @@
 	  {
 		"id": 1,
 		"publisher_id": 1,
-		"title": "Semana de Tecnologia de 11/10 a 16/10",
-		"body": "A Semana de Tecnologia da In­for­ma­ção (SETI) é um e­ven­to que ocorre a­nu­al­men­te no De­par­ta­men­to de Ci­ên­cia da Com­pu­ta­ção (DCC) da U­ni­ver­si­dade Fe­de­ral de La­vras (UFLA) e já pode ser con­si­de­ra­do um dos mai­o­res eventos de tec­no­lo­gia do Sul de Minas. Na edição de 2014, o e­ven­to atingiu 500 par­ti­ci­pan­tes ins­cri­tos, pre­sen­tes em mais de 30 pa­les­tras e 10 mi­ni­cur­sos. A edição de 2015 a­tin­giu 700 par­ti­ci­pan­tes. Em 2018 es­pe­ra­mos atingir um público a­in­da mai­or, já que o evento está con­so­li­da­do, pelo excelente feedback que ti­ve­mos nas últimas edições.\n\nO Departamento de Ci­ên­cia da Com­pu­ta­ção (DCC/UFLA) é o principal responsável pelos cursos de Ba­cha­re­la­do em Ci­ên­cia da Com­pu­ta­ção (BCC) e o Bacharelado em Sis­te­mas de In­for­ma­ção (BSI) da UFLA, por oi­to cursos de Pós-Gra­du­a­ção Lato-Sensu e o Mes­tra­do em Ciência da Com­pu­ta­ção. O DCC também pos­sui grande participação no curso de Engenharia de Con­tro­le e Au­to­ma­ção e será o principal responsável pe­lo cur­so de En­ge­nha­ri­a da Com­pu­ta­ção. Os ex-alunos do DCC des­ta­cam-se por atuar em empresas nacionais e in­ter­na­cio­nais, u­ni­ver­si­da­des federais, além de construir iniciativas em­pre­en­de­do­ras.",
-		"date": "12/09/19 12:22",
-		"image": "seti.jpg"
+		"title": "Agendamento Odontológico - 25/10",
+		"message": "Para o período de 29/10/19 a 31/10/19 haverá 10 vagas para novos tratamentos na CLÍNICA ODONTOLÓGICA:",
+		"when": {
+			"milli": 1572320313125,
+			"date": "25/10/2019"
+		}
 	  },
 	  {
 		"id": 2,
 		"publisher_id": 2,
-		"title": "XI SIMPEC - Simpósio de Pecuária de Corte",
-		"body": "Em sua 11ª edição, o Simpósio de Pecuária de Corte (XI Simpec) conta, este ano, com a participação de mais 320 inscritos de universidades nacionais e internacionais. O evento, cuja abertura ocorreu nesta quinta-feira (19/9) na Universidade Federal de Lavras (UFLA), inclui em sua programação palestras, painéis de discussão, feira de carreira em bovinocultura de corte e, como destacado pelo pró-reitor adjunto de Pós-Graduação, professor Márcio Machado Ladeira, o Dia do Campo, um importante momento para colocar em prática toda a tecnologia que é desenvolvida na Universidade, mostrando a parceria que existe entre a iniciativa privada e pública.",
-		"date": "12/09/19 15:33",
-		"image": "simpec.jpg"
+		"title": "Programação Oficial 2019/2 Completa, Acesse",
+		"message": "Acesse em  http://www.ufla.br/calouros/wp-content/uploads/2019/07/Programa%C3%A7%C3%A3o-Recep%C3%A7%C3%A3o-de-Calouros-2019-2.pdf",
+		"when": {
+			"milli": 1572260313125,
+			"date": "28/10/2019"
+		}
 	  }
 	]
 }
+

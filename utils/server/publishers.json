@@ -2,13 +2,20 @@
 	"publishers": [
 	  {
 		"id": 1,
-		"name": "COMP JR.",
-		"icon": "compjr.jpg"
+		"name": "Pró-Reitoria de Assuntos Estudantis e Comunitários",
+		"initials": "PRAEC",
+		"icon": "praec.svg",
+		"img_background": "praec-predio.jpg"
 	  },
 	  {
 		"id": 2,
-		"name": "DZO",
-		"icon": "dzo.jpg"
+		"name": "Pró-Reitoria de Graduação",
+		"initials": "PRG",
+		"icon": "prg.png",
+		"img_background": "predio-pro-reitorias.jpg"
 	  }
 	]
 }
+
+
+
