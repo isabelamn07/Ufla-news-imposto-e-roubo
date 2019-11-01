@@ -1,0 +1,14 @@
+{
+	"publishers": [
+	  {
+		"id": 1,
+		"name": "COMP JR.",
+		"icon": "compjr.jpg"
+	  },
+	  {
+		"id": 2,
+		"name": "DZO",
+		"icon": "dzo.jpg"
+	  }
+	]
+}
