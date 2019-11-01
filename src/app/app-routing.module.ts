@@ -10,7 +10,8 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
-  }
+  },
+  { path: 'home/comments', loadChildren: './home/comments/comments.module#CommentsPageModule' }
 ];
 
 @NgModule({

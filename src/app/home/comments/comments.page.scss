@@ -1,0 +1,13 @@
+.input-container {
+    padding: 10px;
+
+    ion-input {
+     border-radius: 30px !important;
+     font-size: 0.9em;
+     font-weight: 500;
+     padding-left: 20px !important;
+     margin-bottom: 10px;
+     border: 2px solid var(--ion-color-primary);
+     box-shadow: none !important;
+    }
+}
