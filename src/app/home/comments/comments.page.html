@@ -6,6 +6,13 @@
 
 <ion-content>
   <div class="input-container">
-    <ion-input placeholder="Escreva um comentário" clearInput></ion-input>
+    <ion-input placeholder="Escreva um comentário" clearInput required></ion-input>
+  </div>
+  <ion-item-divider>
+  </ion-item-divider>
+
+  <div class="comment-container" *ngFor="let comment of commentList">
+    <ion-text class="username">{{comment.username}}</ion-text>
+    <ion-text>{{comment.message}} </ion-text>
   </div>
 </ion-content>
