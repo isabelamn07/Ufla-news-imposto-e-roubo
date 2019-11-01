@@ -10,6 +10,15 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+  },
+  {
+    path: 'lista-publicadores',
+    redirectTo: 'lista-publicadores',
+    pathMatch: 'full'
+  },
+  {
+    path: 'lista-publicadores',
+    loadChildren: () => import('./lista-publicadores/lista-publicadores.module').then(m => m.ListaPublicadoresPageModule)
   }
 ];
 

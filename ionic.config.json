@@ -1,5 +1,7 @@
 {
   "name": "uflaNewsApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
