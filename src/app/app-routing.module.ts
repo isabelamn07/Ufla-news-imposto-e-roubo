@@ -13,13 +13,19 @@ const routes: Routes = [
   },
   {
     path: 'lista-publicadores',
-    redirectTo: 'lista-publicadores',
+    loadChildren: () => import('./lista-publicadores/lista-publicadores.module').then(m => m.ListaPublicadoresPageModule)
+  },
+  {
+    path: 'login',
+    redirectTo: 'loling',
     pathMatch: 'full'
   },
   {
-    path: 'lista-publicadores',
-    loadChildren: () => import('./lista-publicadores/lista-publicadores.module').then(m => m.ListaPublicadoresPageModule)
-  }
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
+  },
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule' }
+
 ];
 
 @NgModule({
