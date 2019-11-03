@@ -62,7 +62,7 @@ export class CommentsPage implements OnInit {
       milli: moment().valueOf(),
       date: moment().format('DD/MM/YYYY')
     }
-
+    newComment = newComment as Comment;
     this.commentList.push(newComment);
   }
 
