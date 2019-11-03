@@ -166,10 +166,10 @@ export class HomePage {
 
   getFormatedDateAndDiff(boletim) {
     let date: any;
-    if (boletim.when.date) {
+    if (!boletim.when.milli) {
       date = moment(boletim.when.date, 'DD/MM/YYYY').startOf('day');
     } else {
-      date = moment(boletim.when.mili);
+      date = moment(boletim.when.milli);
     }
 
     let diffGran: string = 'minutos';
@@ -183,7 +183,7 @@ export class HomePage {
       diffGran = 'dias';
     }
 
-    return ({ date: date.format('DD/MM/YYYY hh:mm'), diff: diff + ' ' + diffGran })
+    return ({ date: date.format('DD/MM/YYYY HH:mm'), diff: diff + ' ' + diffGran })
   };
 
   /**

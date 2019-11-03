@@ -9,13 +9,23 @@
 
 <ion-content>
   <div class="input-container">
-    <ion-input placeholder="Escreva um comentário" clearInput required></ion-input>
+    <ion-input placeholder="Escreva um comentário" clearInput required [(ngModel)]="inputComment" (keyup.enter)="saveNewComment()"></ion-input>
   </div>
   <ion-item-divider>
   </ion-item-divider>
 
   <div class="comment-container" *ngFor="let comment of commentList">
-    <ion-text class="username">{{comment.username}}</ion-text>
-    <ion-text>{{comment.message}} </ion-text>
+    <div class="header">
+      <ion-text class="username">{{comment.username}}</ion-text>
+      <div class="delete-container">
+        <ion-button class="delete-btn" fill="clear" id="btn" (click)="deleteComment(comment)"  >
+          <ion-icon slot="end" name="close"  color="danger"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+    <ion-text class="comment-text">{{comment.message}} </ion-text>
+    <div class="publish-date">
+      <ion-text slot="end" > publicado em {{getFormatedDate(comment)}}</ion-text>
+    </div>
   </div>
 </ion-content>
