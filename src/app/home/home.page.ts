@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
-import { Boletim } from './boletim.model';
+import { Boletim } from '../models/boletim.model';
 import { Router } from '@angular/router';
 const moment = require('moment');
 

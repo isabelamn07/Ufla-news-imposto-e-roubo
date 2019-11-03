@@ -1,6 +1,6 @@
 import { Component, OnInit, ModuleWithComponentFactories } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Comment } from './comments.model';
+import { Comment } from '../../models/comments.model';
 const moment  = require('moment');
 
 @Component({
