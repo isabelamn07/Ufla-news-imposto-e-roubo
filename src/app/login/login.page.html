@@ -21,13 +21,13 @@
                 </div>
             <ion-item class="input-field passwd-field">
               <ion-icon slot="start" name="key"></ion-icon>
-              <ion-input name="password" type="password" placeholder="senha"   formControlName="passwd"></ion-input>
+              <ion-input name="password" type="password" placeholder="senha"   formControlName="password"></ion-input>
             </ion-item>
-            <div *ngIf="formGroup.controls.passwd.errors" class="input-feedback">
-                <span *ngIf="formGroup.controls.passwd.errors.required">
+            <div *ngIf="formGroup.controls.password.errors" class="input-feedback">
+                <span *ngIf="formGroup.controls.password.errors.required">
                   Senha é obrigatória
                 </span>
-                <span *ngIf="formGroup.controls.passwd.errors.minlength">
+                <span *ngIf="formGroup.controls.password.errors.minlength">
                   Senha deve ter no mínimo 6 carcateres
                 </span>
               </div>
