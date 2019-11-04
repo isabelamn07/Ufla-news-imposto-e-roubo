@@ -8,9 +8,9 @@
 
   .input-field {
     margin-bottom: 10px;
-    --border-color: var(--ion-color-primary);
+    --border-color: var(--ion-color-secondary-shade);
     --border-width: 1px;
-    --border-radius: 10px;
+    --border-radius: 15px;
     --box-shadow: 2px gray;
     --highlight-height: 0;
   }
@@ -27,6 +27,13 @@
     --border-color: var(--ion-color-success-shade);
   }
 
+  .input-feedback {
+    margin-top: 3px;
+    display: block;
+    font-size: 12px;
+    font-style: italic;
+    color: var(--ion-color-danger-tint);
+  }
 
 }
 
