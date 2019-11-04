@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { ToastController } from '@ionic/angular';
+import { ToastController, LoadingController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -16,12 +16,16 @@ export class LoginPage implements OnInit {
 
   private formGroup: FormGroup;
 
-  constructor(private authService: AuthService, private toastCtrl: ToastController, private formBuilder: FormBuilder) { 
+  constructor(private authService: AuthService,
+    private toastCtrl: ToastController,
+    private formBuilder: FormBuilder,
+    private loadingCtrl: LoadingController) {
+
     this.formGroup = formBuilder.group({
       'email': [null, Validators.compose([
         Validators.required, Validators.email
       ])],
-      'passwd': [null,  Validators.compose([
+      'passwd': [null, Validators.compose([
         Validators.required, Validators.minLength(6)
       ])]
     });
@@ -34,19 +38,28 @@ export class LoginPage implements OnInit {
   async login() {
     console.log(this.formGroup.value);
 
-    try {
-      await this.authService.login(this.formGroup.value);
-    } catch (e) {
-      console.log(e);
-      let toast = await this.toastCtrl.create({
-        message: "E-mail ou senha incorretos!",
-        duration: 2000,
-        color: "danger"
-      })
-      toast.present();
+    let loading = await this.loadingCtrl.create({
+      message: 'Efetuando login... aguarde',
+      duration: 2000
+    });
+    let toast = await this.toastCtrl.create({
+      message: "E-mail ou senha incorretos!",
+      duration: 2000,
+      color: "danger"
+    });
+
+    loading.present();
+    setTimeout(() => {
+      this.authService.login(this.formGroup.value)
+        .catch((err) => {
+          console.log(err);
+          toast.present();
+        });
+      }, 2000)
+
+      return;
     }
-
-    return;
-  }
-
+   
 }
+
+
