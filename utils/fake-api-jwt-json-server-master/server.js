@@ -25,10 +25,17 @@ function verifyToken(token){
   return  jwt.verify(token, SECRET_KEY, (err, decode) => decode !== undefined ?  decode : err)
 }
 
-// Check if the user exists in database
-function isAuthenticated({email, password}){
-  return userdb.users.findIndex(user => user.email === email && user.password === password) !== -1
+// Check if the user exists in database and returns the user data
+function getAuthenticated({email, password}){
+  let index =  userdb.users.findIndex(user => user.email === email && user.password === password)
+  if(index !== -1) {
+    return userdb.users[index];
+  } else {
+    return null;
+  }
 }
+
+
 
 // Register New User
 server.post('/auth/register', (req, res) => {
@@ -36,7 +43,7 @@ server.post('/auth/register', (req, res) => {
   console.log(req.body);
   const {email, password} = req.body;
 
-  if(isAuthenticated({email, password}) === true) {
+  if(getAuthenticated({email, password}) === true) {
     const status = 401;
     const message = 'Email and Password already exist';
     res.status(status).json({status, message});
@@ -80,15 +87,17 @@ server.post('/auth/login', (req, res) => {
   console.log("login endpoint called; request body:");
   console.log(req.body);
   const {email, password} = req.body;
-  if (isAuthenticated({email, password}) === false) {
+  let authUser = getAuthenticated({email, password});
+  if (!authUser) {
     const status = 401
     const message = 'Incorrect email or password'
     res.status(status).json({status, message})
-    return
+    return;
   }
-  const access_token = createToken({email, password})
+  const access_token = createToken({email, password});
   console.log("Access Token:" + access_token);
-  res.status(200).json({access_token})
+  console.log("User: " + authUser)
+  res.status(200).json({access_token, user: authUser})
 })
 
 server.use(/^(?!\/auth).*$/,  (req, res, next) => {
