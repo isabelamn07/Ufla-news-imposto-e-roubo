@@ -54,7 +54,7 @@ export class AppComponent {
       message: "Logout executado com sucesso!",
       duration: 1500,
       color: "dark",
-      position: "middle"
+      position: "bottom"
     })
     toast.present();
     return await this.authService.logout();
