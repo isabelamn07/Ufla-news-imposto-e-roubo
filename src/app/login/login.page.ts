@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { ToastController, LoadingController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {User} from '../models/user.model';
 
 @Component({
   selector: 'app-login',
@@ -9,10 +10,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  // private loggedUser: User = {
-  //   email: '',
-  //   password: ''
-  // };
+  private loggedUser: User = {
+    email: '',
+    password: ''
+  };
 
   private formGroup: FormGroup;
 
@@ -22,10 +23,10 @@ export class LoginPage implements OnInit {
     private loadingCtrl: LoadingController) {
 
     this.formGroup = formBuilder.group({
-      'email': [null, Validators.compose([
+      'email': [this.loggedUser.email, Validators.compose([
         Validators.required, Validators.email
       ])],
-      'password': [null, Validators.compose([
+      'password': [this.loggedUser.password, Validators.compose([
         Validators.required, Validators.minLength(6)
       ])]
     });

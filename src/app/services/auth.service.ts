@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import {tap} from 'rxjs/operators';
 
 import {User} from '../models/user.model'
@@ -18,7 +18,7 @@ const TOKEN_KEY: string = 'auth-token';
 })
 export class AuthService {
   AUTH_API: String= "http://localhost:8000/auth";
-  authState = new BehaviorSubject(false);
+  authState: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(private storage: Storage, private plataform: Platform, private http: HttpClient) {
     this.plataform.ready()
@@ -37,6 +37,7 @@ export class AuthService {
   login(user: User): Promise<AuthResponse> {
     return this.http.post(`${this.AUTH_API}/login`, user).pipe(
       tap(async (res: AuthResponse) => {
+        console.log('resposta login: ' + res);
         if(res.access_token) {
           await this.storage.set(TOKEN_KEY, res.access_token);
           this.authState.next(true);
@@ -50,7 +51,7 @@ export class AuthService {
       tap(async (res: AuthResponse) => {
         if (res.access_token) {
           await this.storage.set(TOKEN_KEY, res.access_token);
-          this.authState.next(true);
+          this.authState.next(false);
         }
       })
     ).toPromise();
@@ -62,7 +63,17 @@ export class AuthService {
   }
 
   isAuthenticated() {
+    console.log("Chegou no auth");
     return this.authState.value;
   }
+
+//  async getLoggedUser() {
+//     if(this.authState.value) {
+//       let user =  await this.storage.get(USER_INFO);
+//       user.acess_token = token;
+//       return user;
+//     }
+//     return;
+//   }
 }
 
