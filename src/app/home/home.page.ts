@@ -83,24 +83,24 @@ export class HomePage {
   public searchedBoletimList: Boletim[];
 
   async ngOnInit() {
-    this.boletimList =  [await this.boletimService.getBoletimListByUser()];
-    console.log("Boletim eh: " + this.boletimList);
+    this.loggedUser = await this.authService.getLoggedUser();
+    this.searchedBoletimList = await this.boletimService.getBoletimListByUser(this.loggedUser);
+    console.log("Boletim eh: " + JSON.stringify(this.boletimList));
   }
 
   constructor(private router: Router, private authService: AuthService, private boletimService: BoletimService) {
-    authService.getLoggedUser().then(user => {
-      this.loggedUser = user;
-    })
   };
 
   getUserLike(boletim): boolean {
-    let usersLikes: String[] = boletim.likes.usernameList;
-    return usersLikes.includes(this.username);
+    // let usersLikes: String[] = boletim.likes.usernameList;
+    // return usersLikes.includes(this.username);
+    return true;
   };
 
   getUserDislike(boletim): boolean {
-    let usersDislikes: String[] = boletim.dislikes.usernameList;
-    return usersDislikes.includes(this.username);
+    // let usersDislikes: String[] = boletim.dislikes.usernameList;
+    // return usersDislikes.includes(this.username);
+    return false;
   };
 
 
@@ -167,11 +167,11 @@ export class HomePage {
   };
 
   getImageUrl(boletim) {
-    return `url(/assets/${boletim.initials.toLowerCase()}/${boletim.img_background})`
+    return `url(/assets/${boletim.publisher.initials.toLowerCase()}/${boletim.publisher.img_background})`
   };
 
   getIconUrl(boletim) {
-    return `/assets/${boletim.initials.toLowerCase()}/${boletim.icon}`
+    return `/assets/${boletim.publisher.initials.toLowerCase()}/${boletim.publisher.icon}`
 
   };
 
@@ -213,24 +213,24 @@ export class HomePage {
 
   sortBoletim(event) {
     let sortType: string = event.target.value;
-    // switch (sortType) {
-    //   case 'titulo':
-    //     this.searchedBoletimList.sort((a, b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0));
-    //     break;
-    //   case 'publicador':
-    //     this.searchedBoletimList.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
-    //     break;
-    //   case 'data':
-    //     this.searchedBoletimList.sort((a, b) => {
-    //       let dateA: number = a.when.milli ? a.when.milli : moment(a.when.date, 'DD/MM/YYYY').valueOf();
-    //       let dateB: number = b.when.milli ? b.when.milli : moment(b.when.date, 'DD/MM/YYYY').valueOf();
-    //       return (dateA > dateB) ? -1 : ((dateB > dateA) ? -1 : 0)
-    //     });
-    //     break;
-    //   default:
-    //     break;
+    switch (sortType) {
+      case 'titulo':
+        this.searchedBoletimList.sort((a, b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0));
+        break;
+      case 'publicador':
+        this.searchedBoletimList.sort((a, b) => (a.publisher.name > b.publisher.name) ? 1 : ((b.publisher.name > a.publisher.name) ? -1 : 0));
+        break;
+      case 'data':
+        this.searchedBoletimList.sort((a, b) => {
+          let dateA: number = a.when.milli ? a.when.milli : moment(a.when.date, 'DD/MM/YYYY').valueOf();
+          let dateB: number = b.when.milli ? b.when.milli : moment(b.when.date, 'DD/MM/YYYY').valueOf();
+          return (dateA > dateB) ? -1 : ((dateB > dateA) ? -1 : 0)
+        });
+        break;
+      default:
+        break;
 
-    // }
+    }
   }
 
   goToComments(boletim) {

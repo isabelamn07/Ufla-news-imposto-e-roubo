@@ -1,19 +1,13 @@
-interface likes {
-    quantity: number,
-    usernameList: String[]
-}
+import {Publisher} from './publisher.model';
+import {Publication} from './publication.model';
 
-export interface Boletim {
-    id: number,
-    publisher_id: number,
-    banner: string,
-    section_id: Number[],
-    title: string,
-    message: string,
-    likes: Number[],
-    dislikes: Number[],
-    when: {
-      milli: number;
-      date: string
-    }
+export interface Boletim extends Publication {
+  publisher: Publisher;
 };
+
+// export class Boletim implements BoletimInterface {
+//   constructor(publisher: Publisher, publication: Publication) {
+//     super(publication);
+//     this.publisher = publisher;
+//   }
+// }

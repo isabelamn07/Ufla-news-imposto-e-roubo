@@ -64,7 +64,7 @@
               <img [src]="getIconUrl(boletim)" alt="" />
             </ion-thumbnail>
             <ion-card-header>
-              <ion-card-title> {{boletim.initials}} </ion-card-title>
+              <ion-card-title> {{boletim.publisher.initials}} </ion-card-title>
               <ion-card-subtitle> Divulgado em {{getFormatedDateAndDiff(boletim).date}} há {{getFormatedDateAndDiff(boletim).diff}} </ion-card-subtitle>
             </ion-card-header>
           </ion-item>
@@ -79,7 +79,7 @@
             <ion-grid>
               <ion-row>
                 <ion-text class="title">
-                  <h2> {{boletim.name}} </h2>
+                  <h2> {{boletim.publisher.name}} </h2>
                   <h3> {{boletim.title}}</h3>
                 </ion-text>
               </ion-row>
@@ -94,7 +94,7 @@
               <ion-row padding-top class="social-buttons">
                 <ion-col>
                   <div>
-                    <span text-left>{{boletim.likes.quantity}}</span>
+                    <span text-left>5</span>
                     <ion-button class="like-button" shape="round" fill="none" no-padding (click)="registerUserLike(boletim)">
                       <ion-icon [color]="getUserLike(boletim)? 'danger' : ''" name="heart" slot="icon-only" ></ion-icon>
                     </ion-button>
@@ -102,7 +102,7 @@
                 </ion-col>
                 <ion-col>
                   <div>
-                    <span>{{boletim.dislikes.quantity}}</span>
+                    <span>4</span>
                     <ion-button class="dislike-button" shape="round" fill="none" no-padding (click)="registerUserDislike(boletim)">
                       <ion-icon [color]="getUserDislike(boletim)? 'warning' : ''" name="heart-dislike" slot="icon-only"></ion-icon>
                     </ion-button>
@@ -110,7 +110,7 @@
                 </ion-col>
                 <ion-col>
                   <div>
-                    <span>{{boletim.comments.length}}</span>
+                    <span>5</span>
                     <ion-button class="comment-button" shape="round" fill="none" no-padding (click) = "goToComments(boletim)">
                       <ion-icon color="secondary" src="/assets/icon/comment.svg" slot="icon-only"></ion-icon>
                     </ion-button>
