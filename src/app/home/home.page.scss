@@ -31,6 +31,7 @@ $size-social-buttons: 22px;
     font-size: $size-social-buttons;
     display: flex;
     vertical-align: center;
+    padding: 0;
 
     
     .like-button {
@@ -56,7 +57,6 @@ $size-social-buttons: 22px;
     display: block;
     padding: 16px;
     width: 80%;
-    margin-bottom: 8px;
   }
 }
 

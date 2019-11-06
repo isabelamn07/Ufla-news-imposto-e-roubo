@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
+
 import { User } from '../models/user.model';
 import { Boletim } from '../models/boletim.model';
 import { Subscription } from '../models/subscription.model';
-
-
-import { map, filter, switchMap, flatMap } from 'rxjs/operators'
 import { Publisher } from '../models/publisher.model';
 import { Publication } from '../models/publication.model';
+import {Comment} from '../models/comment.model';
 
 const API_URL = "http://localhost:3000"
 
@@ -37,8 +36,11 @@ export class BoletimService {
       let publicationList: Publication[] =  await this.httpClient.get<Publication[]>(`${API_URL}/publications?publisher_id=${subs.publisher_id} `).toPromise()
       let publisherList: Publisher[]  = await this.getPublishersById(subs.publisher_id);
       for(let publication of  publicationList) {
-        let boletim = {...publication, publisher: publisherList[0]}
-        respBoletimList = respBoletimList.concat(<Boletim>boletim)
+        let commentList: Comment[] = []  
+        commentList = await this.getCommentsByPublicationId(publication.id);
+        let boletim = {...publication, publisher: publisherList[0], commentList}
+        respBoletimList = respBoletimList.concat(<Boletim> boletim);
+        console.log("O boletim eh: "  + JSON.stringify(boletim));
       }
     }
     // return this.httpClient.get<Subscription[]>(`${API_URL}/subscriptions?user_id=${user.id}`)
@@ -59,5 +61,8 @@ export class BoletimService {
     return this.httpClient.get<Publisher[]>(`${API_URL}/publishers?id=${publisherid}`).toPromise();
   }
 
+  async getCommentsByPublicationId(publicationid: number) {
+    return this.httpClient.get<Comment[]>(`${API_URL}/comments?publication_id=${publicationid}`).toPromise();
 
+  }
 }

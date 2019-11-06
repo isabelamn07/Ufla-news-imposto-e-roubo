@@ -1,6 +1,6 @@
 import { Component, OnInit, ModuleWithComponentFactories } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Comment } from '../../models/comments.model';
+import { Comment } from '../../models/comment.model';
 const moment  = require('moment');
 
 @Component({
@@ -13,7 +13,7 @@ export class CommentsPage implements OnInit {
   private boletimid: number;
   public inputComment: string;
 
-  public commentList: Comment[] = [
+  public commentList: any[] = [
     {
       id: 1,
       username: "Xiripa",

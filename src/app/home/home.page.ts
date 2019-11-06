@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Boletim } from '../models/boletim.model';
 import { Router } from '@angular/router';
 import { User } from '../models/user.model';
 import { AuthService } from '../services/auth.service';
 import { BoletimService } from '../services/boletim.service';
+import { CommentsService } from '../services/comments.service';
 const moment = require('moment');
 
 @Component({
@@ -18,6 +18,7 @@ export class HomePage {
   private username: string = "teste123";
   public userLike: boolean = true;
   public userDislike: boolean = false;
+  public commentsQuantity: number = 0;
 
 
   private boletimList: Array<any> = [
@@ -85,10 +86,12 @@ export class HomePage {
   async ngOnInit() {
     this.loggedUser = await this.authService.getLoggedUser();
     this.searchedBoletimList = await this.boletimService.getBoletimListByUser(this.loggedUser);
-    console.log("Boletim eh: " + JSON.stringify(this.boletimList));
   }
 
-  constructor(private router: Router, private authService: AuthService, private boletimService: BoletimService) {
+  constructor(private router: Router, 
+    private authService: AuthService,
+     private boletimService: BoletimService,
+     private commentsService: CommentsService) {
   };
 
   getUserLike(boletim): boolean {
@@ -103,7 +106,9 @@ export class HomePage {
     return false;
   };
 
-
+  getCommentsQuantity(boletim) {
+   return boletim.commentList.length;
+  }
   /**
     * Registra um like do usuário no sistema fazendo as modificações necessárias
     * 
