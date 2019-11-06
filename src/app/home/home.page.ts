@@ -225,4 +225,8 @@ export class HomePage {
   goToComments(boletim) {
     this.router.navigateByUrl('home/comments/' + boletim.id);
   }
+
+  goToDetails(boletim) {
+    this.router.navigate(['home/details']);
+  }
 }

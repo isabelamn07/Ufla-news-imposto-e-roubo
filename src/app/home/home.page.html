@@ -83,6 +83,14 @@
                   <h3> {{boletim.title}}</h3>
                 </ion-text>
               </ion-row>
+              <ion-row >
+                <div class="more-details-container">
+                  <ion-button color="secondary" expand="full" (click)="goToDetails(boletim)">
+                    <ion-icon slot="start" name="add"></ion-icon>
+                    Ler mais 
+                    </ion-button>
+                </div>
+              </ion-row>
               <ion-row padding-top class="social-buttons">
                 <ion-col>
                   <div>

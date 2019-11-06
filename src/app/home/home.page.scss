@@ -51,6 +51,13 @@ $size-social-buttons: 22px;
       font-size: $size-social-buttons - 8px;
     }
   }
+  .more-details-container {
+    margin: 0 auto;
+    display: block;
+    padding: 16px;
+    width: 80%;
+    margin-bottom: 8px;
+  }
 }
 
 .title-page {
