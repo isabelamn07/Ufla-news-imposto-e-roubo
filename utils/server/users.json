@@ -4,14 +4,14 @@
 		"id": 1,
 		"name": "Paulo Afonso",
 		"username": "pauloafonso",
-		"senha": "1234",
+		"password": "123456",
 		"email": "paulo@email.com"
 	  },
 	  {
 		"id": 2,
 		"name": "Silvio Paulo",
 		"username": "silviopaulo",
-		"senha": "4321",
+		"password": "654321",
 		"email": "silvio@email.com"
 	  }
 	]

@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Boletim } from '../models/boletim.model';
 import { Router } from '@angular/router';
+import { User } from '../models/user.model';
+import { AuthService } from '../services/auth.service';
+import { BoletimService } from '../services/boletim.service';
 const moment = require('moment');
 
 @Component({
@@ -11,12 +14,13 @@ const moment = require('moment');
 })
 export class HomePage {
 
+  private loggedUser: User;
   private username: string = "teste123";
   public userLike: boolean = true;
   public userDislike: boolean = false;
 
 
-  private boletimList: Array<Boletim> = [
+  private boletimList: Array<any> = [
     {
       id: "1",
       name: "Pró-Reitoria de Assuntos Estudantis e Comunitários",
@@ -78,8 +82,15 @@ export class HomePage {
 
   public searchedBoletimList: Boletim[];
 
-  constructor(private router: Router) {
-    this.searchedBoletimList = this.boletimList;
+  async ngOnInit() {
+    this.boletimList =  [await this.boletimService.getBoletimListByUser()];
+    console.log("Boletim eh: " + this.boletimList);
+  }
+
+  constructor(private router: Router, private authService: AuthService, private boletimService: BoletimService) {
+    authService.getLoggedUser().then(user => {
+      this.loggedUser = user;
+    })
   };
 
   getUserLike(boletim): boolean {
@@ -202,24 +213,24 @@ export class HomePage {
 
   sortBoletim(event) {
     let sortType: string = event.target.value;
-    switch (sortType) {
-      case 'titulo':
-        this.searchedBoletimList.sort((a, b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0));
-        break;
-      case 'publicador':
-        this.searchedBoletimList.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
-        break;
-      case 'data':
-        this.searchedBoletimList.sort((a, b) => {
-          let dateA: number = a.when.milli ? a.when.milli : moment(a.when.date, 'DD/MM/YYYY').valueOf();
-          let dateB: number = b.when.milli ? b.when.milli : moment(b.when.date, 'DD/MM/YYYY').valueOf();
-          return (dateA > dateB) ? -1 : ((dateB > dateA) ? -1 : 0)
-        });
-        break;
-      default:
-        break;
+    // switch (sortType) {
+    //   case 'titulo':
+    //     this.searchedBoletimList.sort((a, b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0));
+    //     break;
+    //   case 'publicador':
+    //     this.searchedBoletimList.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+    //     break;
+    //   case 'data':
+    //     this.searchedBoletimList.sort((a, b) => {
+    //       let dateA: number = a.when.milli ? a.when.milli : moment(a.when.date, 'DD/MM/YYYY').valueOf();
+    //       let dateB: number = b.when.milli ? b.when.milli : moment(b.when.date, 'DD/MM/YYYY').valueOf();
+    //       return (dateA > dateB) ? -1 : ((dateB > dateA) ? -1 : 0)
+    //     });
+    //     break;
+    //   default:
+    //     break;
 
-    }
+    // }
   }
 
   goToComments(boletim) {

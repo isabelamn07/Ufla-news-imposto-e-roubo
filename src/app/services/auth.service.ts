@@ -6,25 +6,26 @@ import { Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 
 import { BehaviorSubject } from 'rxjs';
-import {tap} from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
-import {User} from '../models/user.model'
-import {AuthResponse} from '../models/authResponse.model';
+import { User } from '../models/user.model'
+import { AuthResponse } from '../models/authResponse.model';
 
 const TOKEN_KEY: string = 'auth-token';
+const USER_INFO: string = "logged-user";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  AUTH_API: String= "http://localhost:8000/auth";
+  AUTH_API: String = "http://localhost:8000/auth";
   authState: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(private storage: Storage, private plataform: Platform, private http: HttpClient) {
     this.plataform.ready()
       .then(() => {
         this.checkToken();
-    })
+      })
   }
 
   async checkToken() {
@@ -37,9 +38,10 @@ export class AuthService {
   login(user: User): Promise<AuthResponse> {
     return this.http.post(`${this.AUTH_API}/login`, user).pipe(
       tap(async (res: AuthResponse) => {
-        console.log('resposta login: ' + res);
-        if(res.access_token) {
+        console.log('resposta login: ' + JSON.stringify(res.user));
+        if (res.access_token) {
           await this.storage.set(TOKEN_KEY, res.access_token);
+          await this.storage.set(USER_INFO, res.user);
           this.authState.next(true);
         }
       })
@@ -56,9 +58,10 @@ export class AuthService {
       })
     ).toPromise();
   }
- 
+
   async logout() {
     await this.storage.remove(TOKEN_KEY);
+    await this.storage.remove(USER_INFO);
     this.authState.next(false);
   }
 
@@ -67,13 +70,10 @@ export class AuthService {
     return this.authState.value;
   }
 
-//  async getLoggedUser() {
-//     if(this.authState.value) {
-//       let user =  await this.storage.get(USER_INFO);
-//       user.acess_token = token;
-//       return user;
-//     }
-//     return;
-//   }
+  getLoggedUser(): Promise<User> {
+    if (this.authState.value) {
+      return this.storage.get(USER_INFO);
+    }
+  }
 }
 

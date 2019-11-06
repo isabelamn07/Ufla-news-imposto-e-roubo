@@ -4,18 +4,16 @@ interface likes {
 }
 
 export interface Boletim {
-    id: string,
-    name: string,
-    initials: string,
-    img_background: string,
-    icon: string,
+    id: number,
+    publisher_id: number,
+    banner: string,
+    section_id: Number[],
     title: string,
     message: string,
-    likes: likes,
-    dislikes: Object,
+    likes: Number[],
+    dislikes: Number[],
     when: {
       milli: number;
       date: string
-    },
-    comments: String[]
+    }
 };
