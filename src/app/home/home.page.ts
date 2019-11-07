@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Boletim } from '../models/boletim.model';
 import { Router } from '@angular/router';
+import { User } from '../models/user.model';
+import { AuthService } from '../services/auth.service';
+import { BoletimService } from '../services/boletim.service';
+import { CommentsService } from '../services/comments.service';
 const moment = require('moment');
 
 @Component({
@@ -11,12 +14,14 @@ const moment = require('moment');
 })
 export class HomePage {
 
+  private loggedUser: User;
   private username: string = "teste123";
   public userLike: boolean = true;
   public userDislike: boolean = false;
+  public commentsQuantity: number = 0;
 
 
-  private boletimList: Array<Boletim> = [
+  private boletimList: Array<any> = [
     {
       id: "1",
       name: "Pró-Reitoria de Assuntos Estudantis e Comunitários",
@@ -78,21 +83,32 @@ export class HomePage {
 
   public searchedBoletimList: Boletim[];
 
-  constructor(private router: Router) {
-    this.searchedBoletimList = this.boletimList;
+  async ngOnInit() {
+    this.loggedUser = await this.authService.getLoggedUser();
+    this.searchedBoletimList = await this.boletimService.getBoletimListByUser(this.loggedUser);
+  }
+
+  constructor(private router: Router, 
+    private authService: AuthService,
+     private boletimService: BoletimService,
+     private commentsService: CommentsService) {
   };
 
   getUserLike(boletim): boolean {
-    let usersLikes: String[] = boletim.likes.usernameList;
-    return usersLikes.includes(this.username);
+    // let usersLikes: String[] = boletim.likes.usernameList;
+    // return usersLikes.includes(this.username);
+    return true;
   };
 
   getUserDislike(boletim): boolean {
-    let usersDislikes: String[] = boletim.dislikes.usernameList;
-    return usersDislikes.includes(this.username);
+    // let usersDislikes: String[] = boletim.dislikes.usernameList;
+    // return usersDislikes.includes(this.username);
+    return false;
   };
 
-
+  getCommentsQuantity(boletim) {
+   return boletim.commentList.length;
+  }
   /**
     * Registra um like do usuário no sistema fazendo as modificações necessárias
     * 
@@ -156,11 +172,11 @@ export class HomePage {
   };
 
   getImageUrl(boletim) {
-    return `url(/assets/${boletim.initials.toLowerCase()}/${boletim.img_background})`
+    return `url(/assets/${boletim.publisher.initials.toLowerCase()}/${boletim.publisher.img_background})`
   };
 
   getIconUrl(boletim) {
-    return `/assets/${boletim.initials.toLowerCase()}/${boletim.icon}`
+    return `/assets/${boletim.publisher.initials.toLowerCase()}/${boletim.publisher.icon}`
 
   };
 
@@ -207,7 +223,7 @@ export class HomePage {
         this.searchedBoletimList.sort((a, b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0));
         break;
       case 'publicador':
-        this.searchedBoletimList.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+        this.searchedBoletimList.sort((a, b) => (a.publisher.name > b.publisher.name) ? 1 : ((b.publisher.name > a.publisher.name) ? -1 : 0));
         break;
       case 'data':
         this.searchedBoletimList.sort((a, b) => {

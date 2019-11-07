@@ -51,6 +51,7 @@
 
   .comment-text {
       font-weight: 500;
+      display: block;
   }
 
   .publish-date {
@@ -63,4 +64,13 @@
       margin-left: 30%;
       font-size: 14px;
   }
+}
+
+
+.cancel-btn {
+  color: red;
+}
+
+.confirm-btn {
+  color: green;
 }

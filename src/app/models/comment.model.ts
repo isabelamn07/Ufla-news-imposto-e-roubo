@@ -1,7 +1,7 @@
-interface LikeAndDislike {
-    quantity: number;
-    usernameList: String[]
-}
+// interface LikeAndDislike {
+//     quantity: number;
+//     usernameList: String[];
+// }
 
 interface PublishDate {
     milli: number;
@@ -11,8 +11,10 @@ interface PublishDate {
 export interface Comment {
     id: number;
     username: string;
+    publication_id: number;
     message: string;
     when: PublishDate;
-    likes: LikeAndDislike,
-    dislikes: LikeAndDislike,
+    likes?: Number[];
+    dislikes?: Number[];
 }
+
