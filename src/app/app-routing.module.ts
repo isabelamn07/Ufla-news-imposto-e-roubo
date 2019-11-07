@@ -15,7 +15,7 @@ const routes: Routes = [
   },
   { path: 'home/comments/:id', loadChildren: './home/comments/comments.module#CommentsPageModule' , canActivate: [AuthGuard]},
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
-  { path: 'home/details', loadChildren: './home/boletim-details/boletim-details.module#BoletimDetailsPageModule'}
+  { path: 'home/details/:id', loadChildren: './home/boletim-details/boletim-details.module#BoletimDetailsPageModule'}
 ];
 
 @NgModule({

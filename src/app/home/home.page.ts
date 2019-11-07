@@ -5,6 +5,13 @@ import { User } from '../models/user.model';
 import { AuthService } from '../services/auth.service';
 import { BoletimService } from '../services/boletim.service';
 import { CommentsService } from '../services/comments.service';
+
+
+import { ChangeDetectorRef } from '@angular/core'
+
+
+
+
 const moment = require('moment');
 
 @Component({
@@ -14,84 +21,37 @@ const moment = require('moment');
 })
 export class HomePage {
 
-  private loggedUser: User;
-  private username: string = "teste123";
   public userLike: boolean = true;
   public userDislike: boolean = false;
-  public commentsQuantity: number = 0;
-
-
-  private boletimList: Array<any> = [
-    {
-      id: "1",
-      name: "Pró-Reitoria de Assuntos Estudantis e Comunitários",
-      initials: "PRAEC",
-      img_background: "praec-predio.jpg",
-      icon: "praec.svg",
-      title: "Agendamento Odontológico - 25/10",
-      message: "",
-      likes: {
-        quantity: 5,
-        usernameList: [
-          "teste"
-        ]
-      },
-      dislikes: {
-        quantity: 5,
-        usernameList: [
-          "teste"
-        ]
-      },
-      when: {
-        milli: 1572320313125,
-        date: "25/10/2019"
-      },
-      comments: [
-
-      ]
-    },
-    {
-      id: "2",
-      name: "Pró-Reitoria de Graduação",
-      initials: "PRG",
-      img_background: "predio-pro-reitorias.jpg",
-      icon: "prg.png",
-      title: "Programação Oficial 2019/2 Completa, Acesse",
-      message: "",
-      likes: {
-        quantity: 5,
-        usernameList: [
-          "teste",
-          "teste123"
-        ]
-      },
-      dislikes: {
-        quantity: 120,
-        usernameList: [
-          "teste"
-        ]
-      },
-      when: {
-        milli: 1572260313125,
-        date: "28/10/2019"
-      },
-      comments: [
-
-      ]
-    }
-  ];
-
   public searchedBoletimList: Boletim[];
+
+  private loggedUser: User;
+  private boletimList: Boletim[];
+
+
 
   async ngOnInit() {
     this.loggedUser = await this.authService.getLoggedUser();
-    this.searchedBoletimList = await this.boletimService.getBoletimListByUser(this.loggedUser);
+    this.boletimList = await this.boletimService.getBoletimListByUser(this.loggedUser);
+    for(let boletim of this.boletimList) {
+      boletim.comment_quantity = boletim.commentList.length;
+    }
+    this.searchedBoletimList = this.boletimList;
   }
 
-  constructor(private router: Router, 
+  async ionViewWillEnter() {
+    this.searchedBoletimList = await this.boletimService.getBoletimListByUser(this.loggedUser);
+    for(let boletim of this.boletimList) {
+      boletim.comment_quantity = boletim.commentList.length;
+    }
+  }
+  constructor(private router: Router,
     private authService: AuthService,
-     private boletimService: BoletimService,
-     private commentsService: CommentsService) {
+    private boletimService: BoletimService,
+    private commentsService: CommentsService,
+    private ref: ChangeDetectorRef) {
+
+
   };
 
   getUserLike(boletim): boolean {
@@ -107,7 +67,9 @@ export class HomePage {
   };
 
   getCommentsQuantity(boletim) {
-   return boletim.commentList.length;
+    // this.ref.detectChanges();
+    return boletim.commentList.length;
+    //  let commentList = this.commentsService.getListByBoletimId(boletim.id);
   }
   /**
     * Registra um like do usuário no sistema fazendo as modificações necessárias
@@ -123,18 +85,18 @@ export class HomePage {
     else if (this.getUserDislike(boletim)) {
       // Removo o usuário da lista de dislikes, diminui-se numero de dislikes
       let userDislikes: String[] = boletim.dislikes.usernameList;
-      let index: number = userDislikes.indexOf(this.username);
+      let index: number = userDislikes.indexOf(this.loggedUser.username);
       boletim.dislikes.usernameList.splice(index, 1);
       boletim.dislikes.quantity--;
 
       // Movo para lista de likes, incrementa-se numero de likes
-      boletim.likes.usernameList.push(this.username);
+      boletim.likes.usernameList.push(this.loggedUser.username);
       boletim.likes.quantity++;
     }
     //Usuario nao deu like nem dislike no boletim
     else {
       //insiro o usuário na lista de likes
-      boletim.likes.usernameList.push(this.username);
+      boletim.likes.usernameList.push(this.loggedUser.username);
       boletim.likes.quantity++;
     }
     return;
@@ -150,12 +112,12 @@ export class HomePage {
     if (this.getUserLike(boletim)) {
       // Removo o usuário da lista de likes, diminui-se o numero de likes
       let userLikes: String[] = boletim.likes.usernameList;
-      let index: number = userLikes.indexOf(this.username);
+      let index: number = userLikes.indexOf(this.loggedUser.username);
       boletim.likes.usernameList.splice(index, 1);
       boletim.likes.quantity--;
 
       // Movo para lista de dislikes, incrementa-se o numero de dislikes
-      boletim.dislikes.usernameList.push(this.username);
+      boletim.dislikes.usernameList.push(this.loggedUser.username);
       boletim.dislikes.quantity++;
     }
     // Usuario deu dislike no boletim
@@ -165,7 +127,7 @@ export class HomePage {
     //Usuario nao deu like nem dislike no boletim
     else {
       //insiro o usuário na lista de dislikes
-      boletim.dislikes.usernameList.push(this.username);
+      boletim.dislikes.usernameList.push(this.loggedUser.username);
       boletim.dislikes.quantity++;
     }
     return;
@@ -243,6 +205,6 @@ export class HomePage {
   }
 
   goToDetails(boletim) {
-    this.router.navigate(['home/details']);
+    this.router.navigate(['home/details/:id'], { queryParams: {id: boletim.id }});
   }
 }

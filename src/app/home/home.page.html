@@ -110,8 +110,8 @@
                 </ion-col>
                 <ion-col>
                   <div>
-                    <span>{{getCommentsQuantity(boletim)}}</span>
-                    <ion-button class="comment-button" shape="round" fill="none" no-padding (click) = "goToComments(boletim)">
+                    <span>{{boletim.comment_quantity? boletim.comment_quantity : 0}}</span>
+                    <ion-button class="comment-button" shape="round" fill="none" no-padding (click)="goToComments(boletim)">
                       <ion-icon color="secondary" src="/assets/icon/comment.svg" slot="icon-only"></ion-icon>
                     </ion-button>
                   </div>

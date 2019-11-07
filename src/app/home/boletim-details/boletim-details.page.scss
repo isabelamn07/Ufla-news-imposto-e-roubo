@@ -1,0 +1,23 @@
+.title-container {
+  margin: 0 auto;
+  font-weight: 600px;
+  text-align: center;
+  color: #040404ba;
+}
+
+.content-text-container {
+  margin: 30px 10px;
+
+  p {
+    font-size: 16px;
+  }
+}
+
+.image-container {
+    .content-img {
+      display: flex;
+      flex:1;
+      background-size: cover;
+    }
+    height: 25vh;
+}
