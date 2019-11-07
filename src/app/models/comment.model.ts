@@ -14,7 +14,7 @@ export interface Comment {
     publication_id: number;
     message: string;
     when: PublishDate;
-    likes: Number[];
-    dislikes: Number[];
+    likes?: Number[];
+    dislikes?: Number[];
 }
 
