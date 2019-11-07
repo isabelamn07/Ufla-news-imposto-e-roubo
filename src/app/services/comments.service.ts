@@ -41,7 +41,7 @@ export class CommentsService {
     return this.http.post(`${API_URL}`, newComment, this.httpOptions).toPromise();
   }
 
-  async getNextId(): number {
+  async getNextId(): Promise<number>{
     let allCommentsList: Comment[] = await this.http.get<Comment[]>(`${API_URL}`).toPromise();
 
     if (allCommentsList.length)
