@@ -32,14 +32,14 @@
         "milli": 1572320313125,
         "date": "25/10/2019"
       },
-      "likes": [
-        "pauloafonso"
-      ],
-      "dislikes": [
-        "silviopaulo"
-      ],
-      "like_count": 1,
-      "dislike_count": 1,
+      "likes": {
+        "usernameList": ["pauloafonso"],
+        "quantity": 1
+      },
+      "dislikes": {
+        "usernameList":["silviopaulo"],
+        "quantity": 1
+      },
       "comment_count": 1
     },
     {
@@ -53,14 +53,14 @@
         "milli": 1572260313125,
         "date": "28/10/2019"
       },
-      "likes": [
-        "silviopaulo"
-      ],
-      "dislikes": [
-        "pauloafonso"
-      ],
-      "like_count": 1,
-      "dislike_count": 1,
+      "likes": {
+        "quantity": 1,
+        "usernameList": ["silviopaulo"]
+      },
+      "dislikes": {
+        "quantity": 1,
+        "usernameList": ["pauloafonso"]
+      },
       "comment_count": 1
     },
     {
@@ -79,13 +79,14 @@
         "milli": 1572433622360,
         "date": "28/10/2019"
       },
-      "likes": [
-        "pauloafonso",
-        "silviopaulo"
-      ],
-      "dislikes": [],
-      "like_count": 2,
-      "dislike_count": 0,
+      "likes": {
+        "quantity": 0,
+        "usernameList": []
+      },
+      "dislikes": {
+        "quantity": 1,
+        "usernameList": ["pauloafonso"]
+      },
       "comment_count": 1
     }
   ],
@@ -131,10 +132,14 @@
         "milli": 1572344512575,
         "date": "28/10/2019"
       },
-      "likes": [],
-      "dislikes": [
-        "silviopaulo"
-      ]
+      "likes": {
+        "quantity": 1,
+        "usernameList": ["pauloafonso"]
+      },
+      "dislikes": {
+        "quantity": 0,
+        "usernameList": []
+      }
     },
     {
       "id": 3,
@@ -145,10 +150,14 @@
         "milli": 1572412478770,
         "date": "28/10/2019"
       },
-      "likes": [],
-      "dislikes": [
-        "pauloafonso"
-      ]
+      "likes": {
+        "quantity": 0,
+        "usernameList": []
+      },
+      "dislikes": {
+        "quantity": 1,
+        "usernameList": ["pauloafonso"]
+      }
     },
     {
       "message": "oi ;)",
@@ -159,11 +168,14 @@
         "date": "07/11/2019"
       },
       "id": 4,
-      "likes": [
-        "pauloafonso",
-        "silviopaulo"
-      ],
-      "dislikes": []
+      "likes": {
+        "quantity": 0,
+        "usernameList": []
+      },
+      "dislikes": {
+        "quantity": 0,
+        "usernameList": []
+      }
     }
   ],
   "subscriptions": [
