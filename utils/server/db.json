@@ -5,14 +5,16 @@
       "name": "Pró-Reitoria de Assuntos Estudantis e Comunitários",
       "initials": "PRAEC",
       "icon": "praec.svg",
-      "img_background": "praec-predio.jpg"
+      "img_background": "praec-predio.jpg",
+      "subscribers": 1
     },
     {
       "id": 2,
       "name": "Pró-Reitoria de Graduação",
       "initials": "PRG",
       "icon": "prg.png",
-      "img_background": "predio-pro-reitorias.jpg"
+      "img_background": "predio-pro-reitorias.jpg",
+      "subscribers": 2
     }
   ],
   "publications": [
@@ -31,11 +33,14 @@
         "date": "25/10/2019"
       },
       "likes": [
-        1
+        "pauloafonso"
       ],
       "dislikes": [
-        2
-      ]
+        "silviopaulo"
+      ],
+      "like_count": 1,
+      "dislike_count": 1,
+      "comment_count": 1
     },
     {
       "id": 2,
@@ -49,11 +54,14 @@
         "date": "28/10/2019"
       },
       "likes": [
-        2
+        "silviopaulo"
       ],
       "dislikes": [
-        1
-      ]
+        "pauloafonso"
+      ],
+      "like_count": 1,
+      "dislike_count": 1,
+      "comment_count": 1
     },
     {
       "id": 3,
@@ -72,10 +80,13 @@
         "date": "28/10/2019"
       },
       "likes": [
-        1,
-        2
+        "pauloafonso",
+        "silviopaulo"
       ],
-      "dislikes": []
+      "dislikes": [],
+      "like_count": 2,
+      "dislike_count": 0,
+      "comment_count": 1
     }
   ],
   "publication_sections": [
@@ -122,7 +133,7 @@
       },
       "likes": [],
       "dislikes": [
-        2
+        "silviopaulo"
       ]
     },
     {
@@ -136,18 +147,23 @@
       },
       "likes": [],
       "dislikes": [
-        1
+        "pauloafonso"
       ]
     },
     {
-      "message": "oi",
+      "message": "oi ;)",
       "publication_id": 3,
       "username": "pauloafonso",
       "when": {
         "milli": 1573099819160,
         "date": "07/11/2019"
       },
-      "id": 4
+      "id": 4,
+      "likes": [
+        "pauloafonso",
+        "silviopaulo"
+      ],
+      "dislikes": []
     }
   ],
   "subscriptions": [
