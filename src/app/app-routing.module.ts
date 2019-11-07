@@ -17,14 +17,25 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    redirectTo: 'loling',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
   },
-  { path: 'login', loadChildren: './login/login.module#LoginPageModule' }
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
+  {
+    path: 'cadastro',
+    redirectTo: 'cadastro',
+    pathMatch: 'full'
+  },
+  {
+    path: 'cadastro',
+    loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroPageModule)
+  },
+
+
 
 ];
 
