@@ -12,12 +12,15 @@ export class CommentsService {
 
   private httpOptions: {};
 
+
   constructor(private http: HttpClient) {
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     };
+
+
   }
 
   async getQuantityByBoletimId(boletimid): Promise<Number> {
@@ -27,7 +30,7 @@ export class CommentsService {
   }
 
   async getListByBoletimId(boletimid): Promise<Comment[]> {
-    return this.http.get<Comment[]>(`${API_URL}?publication_id=${boletimid}`).toPromise();
+    return await this.http.get<Comment[]>(`${API_URL}?publication_id=${boletimid}`).toPromise();
   }
 
   async deleteById(commentid: number, commentList: Comment[]) {

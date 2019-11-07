@@ -33,12 +33,12 @@ export class BoletimService {
     let respBoletimList: Boletim[] = [];
 
     for(let subs of subscriptionList) {
-      let publicationList: Publication[] =  await this.httpClient.get<Publication[]>(`${API_URL}/publications?publisher_id=${subs.publisher_id} `).toPromise()
+      let publicationList: Publication[] =  await this.httpClient.get<Publication[]>(`${API_URL}/publications?publisher_id=${subs.publisher_id} `).toPromise();
       let publisherList: Publisher[]  = await this.getPublishersById(subs.publisher_id);
       for(let publication of  publicationList) {
         let commentList: Comment[] = []  
         commentList = await this.getCommentsByPublicationId(publication.id);
-        let boletim = {...publication, publisher: publisherList[0], commentList}
+        let boletim = {...publication, publisher: publisherList[0], commentList, comment_quantity: commentList.length}
         respBoletimList = respBoletimList.concat(<Boletim> boletim);
         console.log("O boletim eh: "  + JSON.stringify(boletim));
       }
@@ -64,5 +64,9 @@ export class BoletimService {
   async getCommentsByPublicationId(publicationid: number) {
     return this.httpClient.get<Comment[]>(`${API_URL}/comments?publication_id=${publicationid}`).toPromise();
 
+  }
+
+  async getPublicationById(publicationid: number) {
+    return this.httpClient.get<Publication[]>(`${API_URL}/publications?id=${publicationid}`).toPromise();
   }
 }

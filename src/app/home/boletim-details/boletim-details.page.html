@@ -8,11 +8,34 @@
 </ion-header>
 
 <ion-content>
-<ion-card>
-  <ion-card-content>
-    <p>
-      Ola isso e um teste
-    </p>
-  </ion-card-content>
-</ion-card>
+  <ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-card-header>
+          <div>
+            <ion-text>
+              <h2>{{publication?.title}}</h2>
+            </ion-text>
+          </div>
+        </ion-card-header>
+      </ion-row>
+      <ion-card-content>
+        <ion-row class="image-container">
+          <ion-col class="title-container content-image" [ngStyle]="{'background': getBannerUrl()}">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+        </ion-row>
+        <ion-row>
+          <div class="content-text-container">
+            <ion-text>
+              <p>
+                {{publication?.message}}
+              </p>
+            </ion-text>
+          </div>
+        </ion-row>
+      </ion-card-content>
+    </ion-grid>
+  </ion-card>
 </ion-content>
