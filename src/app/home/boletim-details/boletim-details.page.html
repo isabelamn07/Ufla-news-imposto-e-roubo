@@ -20,8 +20,9 @@
         </ion-card-header>
       </ion-row>
       <ion-card-content>
-        <ion-row class="image-container">
-          <ion-col class="title-container content-image" [ngStyle]="{'background': getBannerUrl()}">
+        <ion-row class="img-container">
+          <ion-col class="title-container image" [ngStyle]="{'background': getBannerUrl()}">
+            <ion-img [src]="getBannerUrl()" class="image"></ion-img>
           </ion-col>
         </ion-row>
         <ion-row>

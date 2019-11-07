@@ -49,7 +49,7 @@ export class HomePage {
     private authService: AuthService,
     private boletimService: BoletimService,
     private commentsService: CommentsService,
-    private ref: ChangeDetectorRef) {
+    ) {
 
 
   };
@@ -66,11 +66,6 @@ export class HomePage {
     return false;
   };
 
-  getCommentsQuantity(boletim) {
-    // this.ref.detectChanges();
-    return boletim.commentList.length;
-    //  let commentList = this.commentsService.getListByBoletimId(boletim.id);
-  }
   /**
     * Registra um like do usuário no sistema fazendo as modificações necessárias
     * 

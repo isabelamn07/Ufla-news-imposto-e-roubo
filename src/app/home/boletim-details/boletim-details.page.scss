@@ -13,11 +13,9 @@
   }
 }
 
-.image-container {
-    .content-img {
-      display: flex;
-      flex:1;
+.img-container {
+    .img {
       background-size: cover;
     }
-    height: 25vh;
+    height: 40vh;
 }

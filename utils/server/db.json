@@ -66,7 +66,7 @@
     {
       "id": 3,
       "publisher_id": 1,
-      "banner": "socioeconomico.jpg",
+      "banner": "avaliação.jpg",
       "title": "Instruções para a Avaliação Socioeconômica 2019/2",
       "section_order": [
         4,
@@ -74,7 +74,7 @@
         5,
         6
       ],
-      "message": "Instruções para calouros ou Primeira Avaliação:",
+      "message": "Instruções para calouros ou Primeira Avaliação",
       "when": {
         "milli": 1572433622360,
         "date": "28/10/2019"

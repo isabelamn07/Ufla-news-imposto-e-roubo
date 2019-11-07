@@ -29,7 +29,15 @@ export class BoletimDetailsPage implements OnInit {
 
   getBannerUrl() {
     if(this.publisher) {
-      return `url(/assets/${this.publisher.initials.toLowerCase()}/${this.publication.banner})`
+      return `url(/assets/${this.publisher.initials.toLowerCase()}/banners/${this.publication.banner})`
+    } else {
+      return '';
+    }
+  };
+
+ getBannerSrc() {
+    if(this.publisher) {
+      return `/assets/${this.publisher.initials.toLowerCase()}/banners/${this.publication.banner}`
     } else {
       return '';
     }
