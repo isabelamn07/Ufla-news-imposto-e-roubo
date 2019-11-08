@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, ToastController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { AuthService } from './services/auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -17,11 +19,16 @@ export class AppComponent {
       icon: 'home'
     }
   ];
-  
+
+  public isLoggedIn = false;
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private authService: AuthService,
+    private router: Router,
+    private toastCtrl: ToastController
   ) {
     this.initializeApp();
   }
@@ -30,6 +37,26 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.authService.authState.subscribe(state => {
+        if (state) {
+          this.isLoggedIn = true;
+          this.router.navigate(['home']);
+        } else {
+          this.router.navigate(['login']);
+        }
+      })
     });
+  }
+
+  async logout() {
+    this.isLoggedIn = false;
+    let toast = await this.toastCtrl.create({
+      message: "Logout executado com sucesso!",
+      duration: 1500,
+      color: "dark",
+      position: "bottom"
+    })
+    toast.present();
+    return await this.authService.logout();
   }
 }

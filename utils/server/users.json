@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
 	"users": [
 	  {
@@ -16,3 +17,23 @@
 	  }
 	]
 }
+=======
+{
+	"users": [
+	  {
+		"id": 1,
+		"name": "Paulo Afonso",
+		"username": "pauloafonso",
+		"password": "123456",
+		"email": "paulo@email.com"
+	  },
+	  {
+		"id": 2,
+		"name": "Silvio Paulo",
+		"username": "silviopaulo",
+		"password": "654321",
+		"email": "silvio@email.com"
+	  }
+	]
+}
+>>>>>>> master

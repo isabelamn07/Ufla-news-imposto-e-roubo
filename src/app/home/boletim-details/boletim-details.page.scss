@@ -1,0 +1,27 @@
+.title-container {
+  margin: 0 auto;
+  font-weight: 600px;
+  text-align: center;
+  color: #040404ba;
+}
+
+.text-col {
+  
+  margin-top: 10%;
+  .content-text-container {
+    margin: 30px 10px;
+  
+    p {
+      font-size: 16px;
+    }
+  }
+}
+
+.img-container {
+    .img {
+      background-size: cover;
+      display: block;
+    }
+    height: 20vh;
+    margin-bottom: 30px;
+}

@@ -1,42 +1,21 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import {AuthGuard} from './guards/auth.guards';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
-  {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
-  },
-  {
-    path: 'lista-publicadores',
-    loadChildren: () => import('./lista-publicadores/lista-publicadores.module').then(m => m.ListaPublicadoresPageModule)
-  },
-  {
-    path: 'login',
     redirectTo: 'login',
     pathMatch: 'full'
   },
   {
-    path: 'login',
-    loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule),
+    canActivate: [AuthGuard]
   },
+  { path: 'home/comments/:id', loadChildren: './home/comments/comments.module#CommentsPageModule' , canActivate: [AuthGuard]},
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
-  {
-    path: 'cadastro',
-    redirectTo: 'cadastro',
-    pathMatch: 'full'
-  },
-  {
-    path: 'cadastro',
-    loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroPageModule)
-  },
-
-
-
+  { path: 'home/details/:id', loadChildren: './home/boletim-details/boletim-details.module#BoletimDetailsPageModule'}
 ];
 
 @NgModule({
@@ -45,4 +24,6 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+  
+}

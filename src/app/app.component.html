@@ -1,6 +1,6 @@
 <ion-app>
   <ion-split-pane>
-    <ion-menu type="overlay">
+    <ion-menu type="overlay" [disabled]="!isLoggedIn">
       <ion-header>
         <ion-toolbar>
           <ion-thumbnail slot="start" margin-start>
@@ -22,6 +22,14 @@
           </ion-menu-toggle>
         </ion-list>
       </ion-content>
+      <ion-footer>
+        <ion-item lines="none" class="logout-container">
+          <ion-button fill="clear" size="large" class="logout-btn" (click)="logout()">
+          <ion-icon slot="start" name="exit"></ion-icon>
+          <ion-label> Logout </ion-label>
+        </ion-button>
+        </ion-item>
+      </ion-footer>
     </ion-menu>
     <ion-router-outlet main></ion-router-outlet>
   </ion-split-pane>

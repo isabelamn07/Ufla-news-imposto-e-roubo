@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title></ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-card-header>
+          <div>
+            <ion-text class="ion-text-center">
+              <h2>{{publication?.title}}</h2>
+            </ion-text>
+          </div>
+        </ion-card-header>
+      </ion-row>
+      <ion-card-content>
+        <ion-row>
+          <ion-col class="img-container">
+            <ion-img [src]="getBannerSrc()" alt="cosulta odontológica"></ion-img>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+        </ion-row>
+        <ion-row>
+          <ion-col class="text-col">
+            <div class="content-text-container">
+              <ion-text>
+                <p>
+                  {{publication?.message}}
+                </p>
+              </ion-text>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-grid>
+  </ion-card>
+</ion-content>

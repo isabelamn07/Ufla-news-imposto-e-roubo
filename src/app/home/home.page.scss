@@ -1,0 +1,104 @@
+$size-social-buttons: 22px;
+
+.bulletin-card {
+  
+  // img {
+  //   max-height: 20vh;
+  //   overflow: hidden;
+  //   display: block;
+  // }
+  
+  .img-background {
+    display: flex;
+    // background: url("/assets/praec_predio.jpg");
+    height: 25vh;
+    align-items: flex-end;
+    background-size: cover;
+  }
+
+  .title {
+
+    h2 {
+      font-weight: 600 !important ;
+    }
+    h3 {
+      font-weight: 600 !important ;
+    }
+  }
+
+  .social-buttons {
+    margin: 0 auto;
+    font-size: $size-social-buttons;
+    display: flex;
+    vertical-align: center;
+    padding: 0;
+
+    
+    .like-button {
+      flex: 1;
+      vertical-align: -13px;
+      font-size: $size-social-buttons - 8px;
+    }
+
+    .dislike-button {
+      flex: 1;
+      vertical-align: -12px;
+      font-size: $size-social-buttons - 6px;
+    }
+
+    .comment-button {
+      flex: 1;
+      vertical-align: -12px;
+      font-size: $size-social-buttons - 8px;
+    }
+  }
+  .more-details-container {
+    margin: 0 auto;
+    display: block;
+    padding: 16px;
+    width: 80%;
+  }
+}
+
+.title-page {
+  display: flex;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+ 
+
+  .text {
+    margin-left: 5%;
+    color: #21a55a;
+
+      h3 {
+        font-weight: 600 !important;
+      }
+  }
+}
+
+.sorting-card {
+    background-color:#1e9551;
+    box-shadow: none;
+
+    ion-text {
+      color: white;
+
+      h4 {
+        font-weight: 900;
+        padding: 0;
+        margin-top: 2px;
+        margin-bottom: 5px;
+      }
+    }
+
+    ion-card-header, ion-card-content {
+      padding: 5px;
+    }
+    
+
+    .option {
+      color: white;
+      font-weight: 600;
+    }
+}

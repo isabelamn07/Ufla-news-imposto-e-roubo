@@ -33,6 +33,7 @@
         "date": "25/10/2019"
       },
       "likes": {
+<<<<<<< HEAD
         "usernameList": ["pauloafonso"],
         "quantity": 1
       },
@@ -41,6 +42,20 @@
         "quantity": 1
       },
       "comment_count": 1
+=======
+        "usernameList": [],
+        "quantity": 0
+      },
+      "dislikes": {
+        "usernameList": [
+          "silviopaulo",
+          "pauloafonso"
+        ],
+        "quantity": 2
+      },
+      "comment_count": 1,
+      "comment_quantity": 0
+>>>>>>> master
     },
     {
       "id": 2,
@@ -55,6 +70,7 @@
       },
       "likes": {
         "quantity": 1,
+<<<<<<< HEAD
         "usernameList": ["silviopaulo"]
       },
       "dislikes": {
@@ -62,11 +78,29 @@
         "usernameList": ["pauloafonso"]
       },
       "comment_count": 1
+=======
+        "usernameList": [
+          "silviopaulo"
+        ]
+      },
+      "dislikes": {
+        "quantity": 1,
+        "usernameList": [
+          "pauloafonso"
+        ]
+      },
+      "comment_count": 1,
+      "comment_quantity": 2
+>>>>>>> master
     },
     {
       "id": 3,
       "publisher_id": 1,
+<<<<<<< HEAD
       "banner": "socioeconomico.jpg",
+=======
+      "banner": "avaliação.jpg",
+>>>>>>> master
       "title": "Instruções para a Avaliação Socioeconômica 2019/2",
       "section_order": [
         4,
@@ -74,12 +108,17 @@
         5,
         6
       ],
+<<<<<<< HEAD
       "message": "Instruções para calouros ou Primeira Avaliação:",
+=======
+      "message": "Instruções para calouros ou Primeira Avaliação",
+>>>>>>> master
       "when": {
         "milli": 1572433622360,
         "date": "28/10/2019"
       },
       "likes": {
+<<<<<<< HEAD
         "quantity": 0,
         "usernameList": []
       },
@@ -88,6 +127,19 @@
         "usernameList": ["pauloafonso"]
       },
       "comment_count": 1
+=======
+        "quantity": 1,
+        "usernameList": [
+          "pauloafonso"
+        ]
+      },
+      "dislikes": {
+        "quantity": 0,
+        "usernameList": []
+      },
+      "comment_count": 1,
+      "comment_quantity": 1
+>>>>>>> master
     }
   ],
   "publication_sections": [
@@ -134,7 +186,13 @@
       },
       "likes": {
         "quantity": 1,
+<<<<<<< HEAD
         "usernameList": ["pauloafonso"]
+=======
+        "usernameList": [
+          "pauloafonso"
+        ]
+>>>>>>> master
       },
       "dislikes": {
         "quantity": 0,
@@ -156,7 +214,13 @@
       },
       "dislikes": {
         "quantity": 1,
+<<<<<<< HEAD
         "usernameList": ["pauloafonso"]
+=======
+        "usernameList": [
+          "pauloafonso"
+        ]
+>>>>>>> master
       }
     },
     {
@@ -195,4 +259,8 @@
       "publisher_id": 2
     }
   ]
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> master
