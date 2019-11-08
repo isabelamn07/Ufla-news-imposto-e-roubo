@@ -8,13 +8,26 @@
   
   
   
-## Primeiros passos
 
-### Instalações básicas para o App
+## Equipe
+
+| Nome       | Username         | Função  |
+| ------------- |:-------------:|:-------------:|
+| Isabela Nascimento   | @isabelamn07 |  Product Owner/Desenvolvedora |
+| Filipe Rodrigues     | @Filipe-Rodrigues      |  Scrum Master/Desenvolvedor |
+| Márcio Inácio | @M4rc1o     |  Desenvolvedor  |
+| Tarik Santigo| @Tarik-INC    |   Scrum Master/Desenvolvedor |
+| Ricardo Caldeira| @Ricardo Caldeira     |  Desenvolvedor |
+
+
+
+## Tutorial de instalação
+
+### Requisitos do projeto
 
 **1.  Instalar Node.js**
 
-O primeiro passo é instalar a plataforma para execução de código JavaScrip, o **Node.js**. Para isso, basta acessar esse [link](https://nodejs.org/en/ "NodeJS") e seguir as instruções.
+O primeiro passo é instalar a plataforma para execução de código JavaScript, o **Node.js**. Para isso, basta acessar esse [link](https://nodejs.org/en/ "NodeJS") e seguir as instruções.
 
 ==================
 
@@ -34,19 +47,49 @@ Em seguida, é necessário instalar a ferramenta **Angular Cli** através do com
 
 ==================
 
-**4. Executar aplicação**
 
-O quarto e último passo é rodar o app. Para isso, entre na pasta onde está contido o projeto e abra o terminal lá. Então é só iniciar o servidor através do comando `ionic serve` e esperar a aplicação ser iniciada.
+### Etapas de execução
 
+**1. Baixar o projeto**
 
+Em uma pasta corrente execute o seguinte comando:
+```
+Git clone git@github.com:isabelamn07/Ufla-news-imposto-e-roubo.git
+```
+Ou baixe o projeto em zip e o extraia
 
-## Equipe
+**2. Instalar as dependencias do projeto**
 
-| Nome       | Username         | Função  |
-| ------------- |:-------------:|:-------------:|
-| Isabela Nascimento   | @isabelamn07 |  Product Owner/Desenvolvedora |
-| Filipe Rodrigues     | @Filipe-Rodrigues      |  Scrum Master/Desenvolvedor |
-| Márcio Inácio | @M4rc1o     |  Desenvolvedor  |
-| Tarik Santigo| @Tarik-INC    |   Scrum Master/Desenvolvedor |
-| Ricardo Caldeira| @Ricardo Caldeira     |  Desenvolvedor |
+No diretório que contêm o projeto, execute os seguintes comandos:
+```
+cd Ufla-news-imposto-e-roubo
+npm i
+```
+**3. Executar serviço de autentificação da aplicação**
 
+Na pasta do projeto, execute os seguintes comandos:
+```
+cd utils/server
+npm i
+npm run start-auth
+```
+
+**4. Executar serviço de dados da aplicação**
+
+Instale a seguinte depêndencia (necessária permissao de adiministrador do sistema): 
+```
+sudo npm i -g json-server
+```
+
+Na pasta do projeto, execute os seguintes comandos:
+```
+cd utils/server
+npm i
+json-server --watch db.json
+```
+**5. Iniciar aplicativo**
+
+Na pasta do projeto, execute o seguinte comando:
+```
+ionic serve
+```
