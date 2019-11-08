@@ -5,17 +5,23 @@
   color: #040404ba;
 }
 
-.content-text-container {
-  margin: 30px 10px;
-
-  p {
-    font-size: 16px;
+.text-col {
+  
+  margin-top: 10%;
+  .content-text-container {
+    margin: 30px 10px;
+  
+    p {
+      font-size: 16px;
+    }
   }
 }
 
 .img-container {
     .img {
       background-size: cover;
+      display: block;
     }
-    height: 40vh;
+    height: 20vh;
+    margin-bottom: 30px;
 }

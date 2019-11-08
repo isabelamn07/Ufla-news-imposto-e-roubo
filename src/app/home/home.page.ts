@@ -33,7 +33,7 @@ export class HomePage {
   async ngOnInit() {
     this.loggedUser = await this.authService.getLoggedUser();
     this.boletimList = await this.boletimService.getBoletimListByUser(this.loggedUser);
-    for(let boletim of this.boletimList) {
+    for (let boletim of this.boletimList) {
       boletim.comment_quantity = boletim.commentList.length;
     }
     this.searchedBoletimList = this.boletimList;
@@ -41,7 +41,7 @@ export class HomePage {
 
   async ionViewWillEnter() {
     this.searchedBoletimList = await this.boletimService.getBoletimListByUser(this.loggedUser);
-    for(let boletim of this.boletimList) {
+    for (let boletim of this.boletimList) {
       boletim.comment_quantity = boletim.commentList.length;
     }
   }
@@ -49,21 +49,19 @@ export class HomePage {
     private authService: AuthService,
     private boletimService: BoletimService,
     private commentsService: CommentsService,
-    ) {
+  ) {
 
 
   };
 
   getUserLike(boletim): boolean {
-    // let usersLikes: String[] = boletim.likes.usernameList;
-    // return usersLikes.includes(this.username);
-    return true;
+    let usersLikes: String[] = boletim.likes.usernameList;
+    return usersLikes.includes(this.loggedUser.username);
   };
 
   getUserDislike(boletim): boolean {
-    // let usersDislikes: String[] = boletim.dislikes.usernameList;
-    // return usersDislikes.includes(this.username);
-    return false;
+    let usersDislikes: String[] = boletim.dislikes.usernameList;
+    return usersDislikes.includes(this.loggedUser.username);
   };
 
   /**
@@ -71,7 +69,9 @@ export class HomePage {
     * 
     * @param boletim a instancia boletim em interação com o usuário
    */
-  registerUserLike(boletim) {
+  async registerUserLike(boletim) {
+    // Para controlar modificações
+    let boletimModified = false;
     //Usario deu like no boletim
     if (this.getUserLike(boletim)) {
       return;
@@ -87,13 +87,16 @@ export class HomePage {
       // Movo para lista de likes, incrementa-se numero de likes
       boletim.likes.usernameList.push(this.loggedUser.username);
       boletim.likes.quantity++;
+      boletimModified = true;
     }
     //Usuario nao deu like nem dislike no boletim
     else {
       //insiro o usuário na lista de likes
       boletim.likes.usernameList.push(this.loggedUser.username);
       boletim.likes.quantity++;
+      boletimModified = true;
     }
+    if (boletimModified) await this.updateBoletimData(boletim);
     return;
   };
 
@@ -102,7 +105,8 @@ export class HomePage {
    * 
    * @param boletim a instancia boletim em interação com o usuário
    */
-  registerUserDislike(boletim) {
+  async registerUserDislike(boletim) {
+    let boletimModified = false;
     //Usario deu like no boletim
     if (this.getUserLike(boletim)) {
       // Removo o usuário da lista de likes, diminui-se o numero de likes
@@ -114,6 +118,7 @@ export class HomePage {
       // Movo para lista de dislikes, incrementa-se o numero de dislikes
       boletim.dislikes.usernameList.push(this.loggedUser.username);
       boletim.dislikes.quantity++;
+      boletimModified = true;
     }
     // Usuario deu dislike no boletim
     else if (this.getUserDislike(boletim)) {
@@ -124,9 +129,19 @@ export class HomePage {
       //insiro o usuário na lista de dislikes
       boletim.dislikes.usernameList.push(this.loggedUser.username);
       boletim.dislikes.quantity++;
+      boletimModified = true;
     }
+
+    if (boletimModified) await this.updateBoletimData(boletim);
     return;
   };
+
+  async updateBoletimData(boletim) {
+    let publication = {...boletim} 
+    delete publication.publisher;
+    delete publication.commentList;
+    await this.boletimService.updatePublication(publication);
+  }
 
   getImageUrl(boletim) {
     return `url(/assets/${boletim.publisher.initials.toLowerCase()}/${boletim.publisher.img_background})`
@@ -200,6 +215,6 @@ export class HomePage {
   }
 
   goToDetails(boletim) {
-    this.router.navigate(['home/details/:id'], { queryParams: {id: boletim.id }});
+    this.router.navigate(['home/details/:id'], { queryParams: { id: boletim.id } });
   }
 }

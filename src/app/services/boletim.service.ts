@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from './auth.service';
 
 import { User } from '../models/user.model';
@@ -17,8 +17,14 @@ const API_URL = "http://localhost:3000"
 export class BoletimService {
 
   private loggedUser: User;
+  private httpOptions: {};
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private http: HttpClient) {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
   }
 
   async getBoletimListByUser(user: User): Promise <Boletim[]> {
@@ -33,7 +39,7 @@ export class BoletimService {
     let respBoletimList: Boletim[] = [];
 
     for(let subs of subscriptionList) {
-      let publicationList: Publication[] =  await this.httpClient.get<Publication[]>(`${API_URL}/publications?publisher_id=${subs.publisher_id} `).toPromise();
+      let publicationList: Publication[] =  await this.http.get<Publication[]>(`${API_URL}/publications?publisher_id=${subs.publisher_id} `).toPromise();
       let publisherList: Publisher[]  = await this.getPublishersById(subs.publisher_id);
       for(let publication of  publicationList) {
         let commentList: Comment[] = []  
@@ -54,19 +60,24 @@ export class BoletimService {
   }
 
   async getUserSubscriptionList(user: User) {
-    return this.httpClient.get<Subscription[]>(`${API_URL}/subscriptions?user_id=${user.id}`).toPromise();
+    return this.http.get<Subscription[]>(`${API_URL}/subscriptions?user_id=${user.id}`).toPromise();
   }
 
   async getPublishersById(publisherid: number) {
-    return this.httpClient.get<Publisher[]>(`${API_URL}/publishers?id=${publisherid}`).toPromise();
+    return this.http.get<Publisher[]>(`${API_URL}/publishers?id=${publisherid}`).toPromise();
   }
 
   async getCommentsByPublicationId(publicationid: number) {
-    return this.httpClient.get<Comment[]>(`${API_URL}/comments?publication_id=${publicationid}`).toPromise();
+    return this.http.get<Comment[]>(`${API_URL}/comments?publication_id=${publicationid}`).toPromise();
 
   }
 
   async getPublicationById(publicationid: number) {
-    return this.httpClient.get<Publication[]>(`${API_URL}/publications?id=${publicationid}`).toPromise();
+    return this.http.get<Publication[]>(`${API_URL}/publications?id=${publicationid}`).toPromise();
+  }
+
+  async updatePublication(newPublication: Publication) {
+    return this.http.put<Publication>((`${API_URL}/publications/${newPublication.id}`), newPublication, this.httpOptions)
+    .toPromise();
   }
 }

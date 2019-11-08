@@ -13,28 +13,30 @@
       <ion-row>
         <ion-card-header>
           <div>
-            <ion-text>
+            <ion-text class="ion-text-center">
               <h2>{{publication?.title}}</h2>
             </ion-text>
           </div>
         </ion-card-header>
       </ion-row>
       <ion-card-content>
-        <ion-row class="img-container">
-          <!-- <ion-col class="title-container image" [ngStyle]="{'background': getBannerUrl()}"> -->
-            <ion-img [src]="getBannerSrc()" class="image"></ion-img>
-          <!-- </ion-col> -->
+        <ion-row>
+          <ion-col class="img-container">
+            <ion-img [src]="getBannerSrc()" alt="cosulta odontológica"></ion-img>
+          </ion-col>
         </ion-row>
         <ion-row>
         </ion-row>
         <ion-row>
-          <div class="content-text-container">
-            <ion-text>
-              <p>
-                {{publication?.message}}
-              </p>
-            </ion-text>
-          </div>
+          <ion-col class="text-col">
+            <div class="content-text-container">
+              <ion-text>
+                <p>
+                  {{publication?.message}}
+                </p>
+              </ion-text>
+            </div>
+          </ion-col>
         </ion-row>
       </ion-card-content>
     </ion-grid>
