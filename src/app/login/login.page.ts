@@ -37,7 +37,6 @@ export class LoginPage implements OnInit {
   }
 
   async login() {
-    console.log(this.formGroup.value);
 
     let loading = await this.loadingCtrl.create({
       message: 'Efetuando login... aguarde',

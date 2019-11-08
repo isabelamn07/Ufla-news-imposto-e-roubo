@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cadastro</ion-title>
+    <ion-back-button slot="start" defaultHref="login"></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="register()" [formGroup]="formGroup">
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div class="form-container ion-padding">
+            <ion-item class="input-field">
+              <ion-icon name="person" slot="start"></ion-icon>
+              <ion-input name="username" type="text" placeholder="Nome" formControlName="username"></ion-input>
+            </ion-item>
+            <div *ngIf="formGroup.controls.username.errors" class="input-feedback">
+              <span *ngIf="formGroup.controls.username.errors.required">
+                O nome de usuário é obrigatorio
+              </span>
+              <span *ngIf="formGroup.controls.username.errors.minlength">
+                O nome de usuário deve conter pelo menos 3 caracteres
+              </span>
+            </div>
+            <ion-item class="input-field">
+              <ion-icon name="mail" slot="start"></ion-icon>
+              <ion-input name="email" type="email" placeholder="exemplo@email.com" formControlName="email"></ion-input>
+            </ion-item>
+            <div *ngIf="formGroup.controls.email.errors" class="input-feedback">
+              <span *ngIf="formGroup.controls.email.errors.required">
+                Email é obrigatório
+              </span>
+              <span *ngIf="formGroup.controls.email.errors.email">
+                Email inválido
+              </span>
+            </div>
+            <ion-item class="input-field passwd-field">
+              <ion-icon name="key" slot="start"></ion-icon>
+              <ion-input name="password" type="password" placeholder="Senha" formControlName="password"></ion-input>
+            </ion-item>
+            <div *ngIf="formGroup.controls.password.errors" class="input-feedback">
+              <span *ngIf="formGroup.controls.password.errors.required">
+                Senha é obrigatória
+              </span>
+              <span *ngIf="formGroup.controls.password.errors.minlength">
+                Senha deve ter no mínimo 6 caracteres
+              </span>
+            </div>
+            <ion-item class="input-field">
+              <ion-icon name="key" slot="start"></ion-icon>
+              <ion-input name="confirmPassword" type="password" placeholder="Repita sua senha"
+                formControlName="confirmPassword"></ion-input>
+            </ion-item>
+            <div *ngIf="formGroup.hasError('notSame')" class="input-feedback">
+              <span>
+                As senhas estão diferentes!
+              </span>
+            </div>
+          </div>
+          <div class="register-btn-container">
+            <ion-button color="primary" size="large" type="submit" [disabled]="!formGroup.valid">Cadastrar</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

@@ -28,7 +28,8 @@ export class AppComponent {
     private statusBar: StatusBar,
     private authService: AuthService,
     private router: Router,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private route: ActivatedRoute
   ) {
     this.initializeApp();
   }
@@ -42,7 +43,13 @@ export class AppComponent {
           this.isLoggedIn = true;
           this.router.navigate(['home']);
         } else {
-          this.router.navigate(['login']);
+          let actualRoute: string
+           this.route.url.subscribe(subs => {
+            console.log(subs);
+          })
+          if (!(this.router.url === '/'))  {
+            this.router.navigate(['login']);
+          }
         }
       })
     });
