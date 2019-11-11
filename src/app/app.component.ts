@@ -17,6 +17,11 @@ export class AppComponent {
       title: 'Home',
       url: '/home',
       icon: 'home'
+    },
+    {
+      title: 'Inscrições',
+      url: '/subscription',
+      icon: 'bookmarks'
     }
   ];
 
@@ -60,7 +65,7 @@ export class AppComponent {
     let toast = await this.toastCtrl.create({
       message: "Logout executado com sucesso!",
       duration: 1500,
-      color: "dark",
+      color: "success",
       position: "bottom"
     })
     toast.present();
