@@ -16,7 +16,6 @@ const API_URL = "http://localhost:3000"
 })
 export class BoletimService {
 
-  private loggedUser: User;
   private httpOptions: {};
 
   constructor(private http: HttpClient) {
@@ -79,5 +78,9 @@ export class BoletimService {
   async updatePublication(newPublication: Publication) {
     return this.http.put<Publication>((`${API_URL}/publications/${newPublication.id}`), newPublication, this.httpOptions)
     .toPromise();
+  }
+
+  async getAllPublishers() {
+    return this.http.get<Publisher[]>(`${API_URL}/publications`).toPromise();
   }
 }
