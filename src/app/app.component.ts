@@ -21,7 +21,7 @@ export class AppComponent {
     {
       title: 'Inscrições',
       url: '/subscription',
-      icon: 'bookmarks'
+      icon: 'checkbox-outline'
     }
   ];
 
