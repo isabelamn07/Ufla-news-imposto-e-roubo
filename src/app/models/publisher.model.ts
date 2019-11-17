@@ -4,4 +4,5 @@ export interface Publisher {
      initials: String;
      icon: String;
      img_background: String;
+     selected?: boolean;
 }
