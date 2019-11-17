@@ -28,4 +28,12 @@ export class SubscriptionService {
     async getUserSubscriptionList(user: User) {
         return this.http.get<Subscription[]>(`${API_URL}/subscriptions?user_id=${user.id}`).toPromise();
     }
+
+    async removeSubscription(subid: number) {
+        return this.http.delete(`${API_URL}/subscriptions/${subid}`).toPromise();
+    }
+
+    async addNewSubscription(subscription) {
+        return this.http.post(`${API_URL}/subscriptions`, subscription, this.httpOptions).toPromise();
+    }
 }
