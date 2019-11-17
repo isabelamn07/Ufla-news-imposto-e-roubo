@@ -199,13 +199,13 @@
     },
     {
       "user_id": 1,
-      "publisher_id": 2,
-      "id": 5
+      "publisher_id": 1,
+      "id": 6
     },
     {
       "user_id": 1,
-      "publisher_id": 1,
-      "id": 6
+      "publisher_id": 2,
+      "id": 7
     }
   ]
 }

@@ -5,6 +5,7 @@ import { User } from '../models/user.model';
 import { Publisher } from '../models/publisher.model';
 import { Router } from '@angular/router';
 import { Subscription } from '../models/subscription.model';
+import { LoadingController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-subscription',
@@ -17,15 +18,14 @@ export class SubscriptionPage implements OnInit {
   private publisherList: Publisher[];
   private publisheridListToAdd: number[] = [];
   private publisheridListToDel: number[] = [];
-  private subscriptionidListToDel: number[] = []
-  private selectedPublisherIdList;
-  private deselectedPublisherIdList;
   private loggedUser: User;
   private userSubscriptionList: Subscription[];
 
   constructor(private authService: AuthService,
     private subscriptionService: SubscriptionService,
-    private router: Router) { }
+    private router: Router,
+    private loadingCtrl: LoadingController,
+    private toastCtrl: ToastController) { }
 
   async ngOnInit() {
     this.publisherList = await this.subscriptionService.getAllPublishers();
@@ -72,7 +72,24 @@ export class SubscriptionPage implements OnInit {
     }
   }
 
+  async save() {
+    let loading = await this.loadingCtrl.create({
+      message: "Salvando as inscrições, ...aguarde",
+      duration: 2000
+    });
+
+    loading.present().then(() => {
+      this.saveSubscriptions().then(() => {
+        this.showSuccessSubMessage();
+      })
+      .catch(err => {
+        this.showErrorSubMessage();
+      })
+    })  
+  }
+
   async saveSubscriptions() {
+
     if (this.publisheridListToDel.length) {
       for (let publisherid of this.publisheridListToDel) {
         for (let userSubscription of this.userSubscriptionList) {
@@ -86,7 +103,6 @@ export class SubscriptionPage implements OnInit {
 
     if (this.publisheridListToAdd.length) {
       for (let publisherid of this.publisheridListToAdd) {
-
         let newSubscription = {
           user_id: this.loggedUser.id,
           publisher_id: publisherid
@@ -98,6 +114,27 @@ export class SubscriptionPage implements OnInit {
     this.router.navigate(['home']);
   }
 
+  async showSuccessSubMessage() {
+    let toast = await this.toastCtrl.create({
+      header: "Sucesso",
+      message: "As novas inscrições foram salvas com sucesso!",
+      duration: 1000,
+      color: "success"
+    });
+
+    return toast.present();
+  }
+  
+  async showErrorSubMessage() {
+    let toast = await this.toastCtrl.create({
+      header: "ERRO!",
+      message: "Algo inesperado ocorreu ao tentar salvar as inscrições",
+      duration: 1300,
+      color: "danger"
+    });
+
+    return toast.present();
+  }
   getIconUrl(publisher) {
     return `/assets/${publisher.initials.toLowerCase()}/${publisher.icon}`;
   }
