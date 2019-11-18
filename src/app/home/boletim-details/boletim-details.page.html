@@ -28,15 +28,30 @@
         <ion-row>
         </ion-row>
         <ion-row>
-          <ion-col class="text-col">
-            <div class="content-text-container">
+          <ion-list class="section-list">
+            <ion-item *ngFor="let section of sectionList" class="section" lines="full">
+              <ion-list-header>{{section.title}}</ion-list-header>
+                <ion-text>
+                  <p>{{section.body}}</p>
+                </ion-text>
+              </ion-item>
+          </ion-list>
+          <!-- <ion-col class="section-col" *ngFor="let section of sectionList">
+            <ion-item-divider>
+              <ion-label>{{section.title}}</ion-label>
+              <ion-item lines="none">
+                <ion-text><p>{{section.body}}</p></ion-text>
+              </ion-item>
+            </ion-item-divider> -->
+            <!-- <div class="content-text-container">
               <ion-text>
                 <p>
                   {{publication?.message}}
                 </p>
               </ion-text>
-            </div>
-          </ion-col>
+            </div> -->
+          
+          <!-- </ion-col> -->
         </ion-row>
       </ion-card-content>
     </ion-grid>
