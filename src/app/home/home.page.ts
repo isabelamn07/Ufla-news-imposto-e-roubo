@@ -41,7 +41,6 @@ export class HomePage {
 
   async ionViewWillEnter() {
     this.searchedBoletimList = await this.boletimService.getBoletimListByUser(this.loggedUser);
-    this.sortBoletim({event: {target: 'title'}});
     for (let boletim of this.boletimList) {
       boletim.comment_quantity = boletim.commentList.length;
     }
