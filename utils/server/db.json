@@ -23,7 +23,6 @@
       "publisher_id": 1,
       "banner": "dental.jpg",
       "title": "Agendamento Odontológico - 25/10",
-      "message": "Para o período de 29/10/19 a 31/10/19 haverá 10 vagas para novos tratamentos na CLÍNICA ODONTOLÓGICA.",
       "section_order": [
         1,
         2
@@ -52,7 +51,6 @@
       "banner": "novo_semestre.jpg",
       "title": "Programação Oficial 2019/2 Completa, Acesse",
       "section_order": [],
-      "message": "Acesse em  http://www.ufla.br/calouros/wp-content/uploads/2019/07/Programa%C3%A7%C3%A3o-Recep%C3%A7%C3%A3o-de-Calouros-2019-2.pdf",
       "when": {
         "milli": 1572260313125,
         "date": "28/10/2019"
@@ -200,12 +198,12 @@
     {
       "user_id": 1,
       "publisher_id": 1,
-      "id": 6
+      "id": 8
     },
     {
       "user_id": 1,
       "publisher_id": 2,
-      "id": 7
+      "id": 9
     }
   ]
 }

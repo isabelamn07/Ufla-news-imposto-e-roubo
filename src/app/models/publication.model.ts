@@ -6,7 +6,6 @@ export interface Publication {
   banner: string,
   section_order: Number[],
   title: string,
-  message: string,
   likes: SocialInteraction,
   dislikes: SocialInteraction,
   when: {
