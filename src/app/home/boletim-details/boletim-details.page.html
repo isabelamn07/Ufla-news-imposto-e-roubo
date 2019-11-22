@@ -31,27 +31,23 @@
           <ion-list class="section-list">
             <ion-item *ngFor="let section of sectionList" class="section" lines="full">
               <ion-list-header>{{section.title}}</ion-list-header>
-                <ion-text>
+              <ion-text>
+                <p>{{section.body}}</p>
+              </ion-text>
+            </ion-item>
+          </ion-list>
+          <ion-slides [options]="sliderOptions">
+            <ion-slide *ngFor="let section of sectionList">
+              <div class="section">
+                <ion-text class="section-title">
+                  <h2>{{section.title}}</h2>
+                </ion-text>
+                <ion-text class="section-body">
                   <p>{{section.body}}</p>
                 </ion-text>
-              </ion-item>
-          </ion-list>
-          <!-- <ion-col class="section-col" *ngFor="let section of sectionList">
-            <ion-item-divider>
-              <ion-label>{{section.title}}</ion-label>
-              <ion-item lines="none">
-                <ion-text><p>{{section.body}}</p></ion-text>
-              </ion-item>
-            </ion-item-divider> -->
-            <!-- <div class="content-text-container">
-              <ion-text>
-                <p>
-                  {{publication?.message}}
-                </p>
-              </ion-text>
-            </div> -->
-          
-          <!-- </ion-col> -->
+              </div>
+            </ion-slide>
+          </ion-slides>
         </ion-row>
       </ion-card-content>
     </ion-grid>

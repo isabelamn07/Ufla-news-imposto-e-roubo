@@ -197,12 +197,12 @@
     },
     {
       "user_id": 1,
-      "publisher_id": 1,
+      "publisher_id": 2,
       "id": 4
     },
     {
       "user_id": 1,
-      "publisher_id": 2,
+      "publisher_id": 1,
       "id": 5
     }
   ]

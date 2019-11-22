@@ -18,6 +18,13 @@ export class BoletimDetailsPage implements OnInit {
   public sectionList: Section[];
   private publicationid: number;
 
+  public sliderOptions: Object = {
+    pager:true,
+    scrollbar: true,
+    centeredSlides: true,
+    cancelable: true
+  };
+
 
   constructor(private activatedRoute: ActivatedRoute,
     private boletimService: BoletimService,
