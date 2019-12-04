@@ -14,7 +14,7 @@
     <ion-list>
       <ion-item-sliding *ngFor="let publisher of searchedPublisherList">
         <ion-item>
-          <ion-avatar class="publisher-icon"><img [src]="getIconUrl(publisher)"/></ion-avatar>
+          <ion-avatar class="publisher-icon" (click)="navigateToPublisherDetails(publisher)"><img [src]="getIconUrl(publisher)"/></ion-avatar>
           <ion-label>{{publisher.initials}}</ion-label>
           <ion-toggle [(ngModel)]="publisher.selected" (ionChange)="checkSelection(publisher)"></ion-toggle>
         </ion-item>

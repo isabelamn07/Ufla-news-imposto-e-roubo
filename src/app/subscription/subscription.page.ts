@@ -136,12 +136,17 @@ export class SubscriptionPage implements OnInit {
 
     return toast.present();
   }
+
   getIconUrl(publisher) {
     return `/assets/${publisher.initials.toLowerCase()}/${publisher.icon}`;
   }
 
   cancel() {
     this.router.navigate(['home']);
+  }
+
+  navigateToPublisherDetails(publisher) {
+    this.router.navigate(['publisher-details', publisher.id])
   }
 
 }

@@ -60,7 +60,8 @@ export class BoletimDetailsPage implements OnInit {
     },
     autoplay: {
       delay: 5000
-    }
+    },
+    isEnd: true	
   };
 
 
