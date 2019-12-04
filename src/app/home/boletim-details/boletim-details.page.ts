@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Publication } from 'src/app/models/publication.model';
 import { BoletimService } from 'src/app/services/boletim.service';
 import { Publisher } from 'src/app/models/publisher.model';
 import { SectionService } from 'src/app/services/section.service';
 import { Section } from 'src/app/models/section.model';
+import { IonSlides } from '@ionic/angular';
 
 @Component({
   selector: 'app-boletim-details',
@@ -17,6 +18,33 @@ export class BoletimDetailsPage implements OnInit {
   public publisher: Publisher;
   public sectionList: Section[];
   private publicationid: number;
+
+  @ViewChild(IonSlides, {static: true}) slides: IonSlides;
+
+  slidePrev() {
+    this.slides.slidePrev();
+  }
+  
+  slideNext() {
+    this.slides.slideNext();
+  }
+
+  async slideInBeginning() {
+    return await this.slideInBeginning();
+  }
+
+  async slideInEnd() {
+    return await this.slideInEnd();
+  }
+
+  public sliderOptions: Object = {
+    initialSlide: 0,
+    slidesPerView: 1,
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'progressbar',
+    }
+  };
 
 
   constructor(private activatedRoute: ActivatedRoute,

@@ -42,7 +42,8 @@ export class SubscriptionPage implements OnInit {
     })
   }
 
-  ionViewWillEnter() {
+  async ionViewWillEnter() {
+    this.userSubscriptionList = await this.subscriptionService.getUserSubscriptionList(this.loggedUser);
     this.publisheridListToAdd = [];
     this.publisheridListToDel = [];
   }
