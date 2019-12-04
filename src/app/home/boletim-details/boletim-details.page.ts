@@ -76,7 +76,7 @@ export class BoletimDetailsPage implements OnInit {
   async ngOnInit() {
    // await this.slides.startAutoplay();
     this.publication = (await this.boletimService.getPublicationById(this.publicationid))[0];
-    this.publisher = (await this.boletimService.getPublishersById(this.publication.publisher_id))[0];
+    this.publisher = (await this.boletimService.getPublisherById(this.publication.publisher_id))[0];
     if(this.publication.section_order) {
       this.sectionList = await this.sectionService.getSectionListBySectionOrder(this.publication.section_order);
     } else {

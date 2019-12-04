@@ -7,5 +7,25 @@
 </ion-header>
 
 <ion-content>
+<div class="logo">
+  <ion-img [src]="getIconSrc()" alt="Logo da universidade"> </ion-img>
+</div>
+<ion-text class="publisher-title"> <h2>{{publisher?.name}}</h2></ion-text>
 
+<ion-card>
+  
+  <ion-card-header class="info-header">
+    <ion-card-title class="info-title">
+      Informações gerais
+    </ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <div class="info-text">
+      <ion-text class="num-publications">Número de publicações: {{quantityPublications}}</ion-text>
+      <ion-text class="num-subs">Número de inscrições: {{quantitySubscriptions}}</ion-text>
+    </div>
+  </ion-card-content>
+
+</ion-card>
 </ion-content>

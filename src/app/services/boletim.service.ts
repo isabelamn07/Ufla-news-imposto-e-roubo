@@ -39,7 +39,7 @@ export class BoletimService {
 
     for(let subs of subscriptionList) {
       let publicationList: Publication[] =  await this.http.get<Publication[]>(`${API_URL}/publications?publisher_id=${subs.publisher_id} `).toPromise();
-      let publisherList: Publisher[]  = await this.getPublishersById(subs.publisher_id);
+      let publisherList: Publisher[]  = await this.getPublisherById(subs.publisher_id);
       for(let publication of  publicationList) {
         let commentList: Comment[] = []  
         commentList = await this.getCommentsByPublicationId(publication.id);
@@ -62,7 +62,7 @@ export class BoletimService {
     return this.http.get<Subscription[]>(`${API_URL}/subscriptions?user_id=${user.id}`).toPromise();
   }
 
-  async getPublishersById(publisherid: number) {
+  async getPublisherById(publisherid: number) {
     return this.http.get<Publisher[]>(`${API_URL}/publishers?id=${publisherid}`).toPromise();
   }
 

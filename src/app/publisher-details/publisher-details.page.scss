@@ -1,0 +1,46 @@
+.logo {
+    width: 30%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    
+}
+
+.publisher-title {
+    text-align: center;
+    padding: 0 18px;
+    color:#112f56;
+    h2 {
+        margin-top: 0px;
+        font-size: 21px;
+    }
+}
+
+.info-title {
+    text-align: center;
+    font-weight: 550;
+    color:whitesmoke
+}
+
+.info-header {
+    background-color: #1c50e2ed;
+}
+
+.info-text {
+    font-size: 15px;
+    color: #242524;
+    font-weight: 550;
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+
+    .num-publications {
+        flex: 1;
+        margin-bottom: 10px;
+    }
+
+    .num-subs {
+        flex: 1;
+    }
+}

@@ -83,10 +83,10 @@ export class SubscriptionPage implements OnInit {
       this.saveSubscriptions().then(() => {
         this.showSuccessSubMessage();
       })
-      .catch(err => {
-        this.showErrorSubMessage();
-      })
-    })  
+        .catch(err => {
+          this.showErrorSubMessage();
+        })
+    })
   }
 
   async saveSubscriptions() {
@@ -125,7 +125,7 @@ export class SubscriptionPage implements OnInit {
 
     return toast.present();
   }
-  
+
   async showErrorSubMessage() {
     let toast = await this.toastCtrl.create({
       header: "ERRO!",
@@ -146,7 +146,11 @@ export class SubscriptionPage implements OnInit {
   }
 
   navigateToPublisherDetails(publisher) {
-    this.router.navigate(['publisher-details', publisher.id])
+    this.router.navigate(['publisher-details/:id'], {
+      queryParams: {
+        id: publisher.id
+      }
+    })
   }
 
 }
