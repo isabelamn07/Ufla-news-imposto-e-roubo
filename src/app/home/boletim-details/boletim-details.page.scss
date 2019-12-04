@@ -33,7 +33,6 @@ ion-slides {
   display: block;
   margin: 12% auto;
 
-
   .section-title {
     h2 {
       color: #737171b0;
@@ -48,4 +47,19 @@ ion-slides {
   .section-body {
     color: black;
   }
+}
+
+.navigation-arrow {
+  position: absolute;
+  bottom: 3%;
+  font-size: 28px;
+  z-index: 2;
+  color: var(--ion-color-secondary);
+}
+
+.arrow-left {
+    left: 16px;
+}
+.arrow-right {
+  right: 16px
 }

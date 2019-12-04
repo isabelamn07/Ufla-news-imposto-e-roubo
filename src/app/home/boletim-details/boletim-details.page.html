@@ -23,7 +23,7 @@
             <ion-img [src]="getBannerSrc()" alt="cosulta odontológica"></ion-img>
         <ion-row>
         </ion-row>
-        <ion-row>
+        <ion-row *ngIf="sectionList.length">
           <!-- <ion-list class="section-list">
             <ion-item *ngFor="let section of sectionList" class="section" lines="full">
               <ion-list-header>{{section.title}}</ion-list-header>
@@ -32,13 +32,13 @@
               </ion-text>
             </ion-item>
           </ion-list> -->
-          <div style="position: absolute;bottom: 3%;left: 16px;font-size: 25px;z-index: 2; color: var(--ion-color-secondary);" (click)="slidePrev()">
-            <ion-icon name="arrow-back"></ion-icon>
+          <div class="navigation-arrow arrow-left" (click)="slidePrev()">
+            <ion-icon  *ngIf="!disablePrevArrow" name="arrow-round-back"></ion-icon>
           </div>
-          <div style="position: absolute;bottom: 3%;right: 16px;font-size: 25px;z-index: 2; color: var(--ion-color-secondary);" (click)="slideNext()">
-            <ion-icon name="arrow-forward"></ion-icon>
+          <div class="navigation-arrow arrow-right" (click)="slideNext()">
+            <ion-icon  *ngIf ="!disableNextArrow" name="arrow-round-forward"></ion-icon>
           </div>
-          <ion-slides pager="true" paginationType="progressbar" [options]="sliderOptions">
+          <ion-slides pager="true" paginationType="progressbar" [options]="sliderOptions" (ionSlideWillChange)="checkNavigation()">
             <ion-slide *ngFor="let section of sectionList">
               <!-- <div class="swiper-button-next" (click)="slideNext()"></div>
               <div class="swiper-button-prev" (click)="slidePrev()"></div> -->

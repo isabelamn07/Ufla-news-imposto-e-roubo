@@ -16,10 +16,13 @@ export class BoletimDetailsPage implements OnInit {
 
   public publication: any;
   public publisher: Publisher;
-  public sectionList: Section[];
+  public sectionList: Section[] = [];
   private publicationid: number;
 
-  @ViewChild(IonSlides, {static: true}) slides: IonSlides;
+  public disablePrevArrow = true;
+  public disableNextArrow = false;
+
+  @ViewChild(IonSlides, {static: false}) slides: IonSlides;
 
   slidePrev() {
     this.slides.slidePrev();
@@ -29,8 +32,19 @@ export class BoletimDetailsPage implements OnInit {
     this.slides.slideNext();
   }
 
-  async slideInBeginning() {
-    return await this.slideInBeginning();
+  checkNavigation() {
+    let promiseBeg = this.slides.isBeginning();
+    let promiseEnd = this.slides.isEnd();
+
+    Promise.all([promiseBeg, promiseEnd]).then((data) => {
+      data[0] ? this.disablePrevArrow = true : this.disablePrevArrow = false;
+      data[1] ? this.disableNextArrow = true : this.disableNextArrow = false;
+    });
+  }
+
+  slideInBeginning() {
+     let test = this.slides.isBeginning().then(res => res);
+     return test;
   }
 
   async slideInEnd() {
@@ -43,6 +57,9 @@ export class BoletimDetailsPage implements OnInit {
     pagination: {
       el: '.swiper-pagination',
       type: 'progressbar',
+    },
+    autoplay: {
+      delay: 5000
     }
   };
 
@@ -56,6 +73,7 @@ export class BoletimDetailsPage implements OnInit {
   }
 
   async ngOnInit() {
+   // await this.slides.startAutoplay();
     this.publication = (await this.boletimService.getPublicationById(this.publicationid))[0];
     this.publisher = (await this.boletimService.getPublishersById(this.publication.publisher_id))[0];
     if(this.publication.section_order) {
