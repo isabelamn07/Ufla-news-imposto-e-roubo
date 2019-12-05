@@ -1,31 +1,74 @@
 <ion-header>
   <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="home"></ion-back-button>
-      </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<div class="logo">
-  <ion-img [src]="getIconSrc()" alt="Logo da universidade"> </ion-img>
-</div>
-<ion-text class="publisher-title"> <h2>{{publisher?.name}}</h2></ion-text>
+  <div class="logo">
+    <ion-img [src]="getIconSrc()" alt="Logo da universidade"> </ion-img>
+  </div>
+  <ion-text class="publisher-title">
+    <h2>{{publisher?.name}}</h2>
+  </ion-text>
 
-<ion-card>
-  
-  <ion-card-header class="info-header">
-    <ion-card-title class="info-title">
-      Informações gerais
-    </ion-card-title>
-  </ion-card-header>
+  <ion-card class="info-card">
+    <ion-card-header class="info-header">
+      <ion-card-title class="info-title">
+        Informações gerais
+      </ion-card-title>
+    </ion-card-header>
 
-  <ion-card-content>
-    <div class="info-text">
-      <ion-text class="num-publications">Número de publicações: {{quantityPublications}}</ion-text>
-      <ion-text class="num-subs">Número de inscrições: {{quantitySubscriptions}}</ion-text>
-    </div>
-  </ion-card-content>
+    <ion-card-content>
+      <div class="info-text">
+        <ion-item class="num-publications">
+          <ion-icon name="paper" slot="start"></ion-icon>
+          <ion-text>Número de publicações: {{quantityPublications}}</ion-text>
+        </ion-item>
+        <ion-item class="num-subs">
+          <ion-icon name="checkbox-outline" slot="start"></ion-icon>
+          <ion-text>Número de inscrições: {{quantitySubscriptions}}</ion-text>
+        </ion-item>
 
-</ion-card>
+        <ion-item class="num-comments">
+            <ion-icon src="assets/icon/comment.svg" slot="start"></ion-icon>
+            <ion-text>Número de comentarios: {{quantityComments}}</ion-text>
+          </ion-item>
+        <ion-item class="num-likes">
+            <ion-icon name="thumbs-up" slot="start"></ion-icon>
+            <ion-text>Número de likes: {{quantityLikes}}</ion-text>
+        </ion-item>  
+        <ion-item class="num-dislikes">
+            <ion-icon name="thumbs-down" slot="start"></ion-icon>
+            <ion-text>Número de dislikes: {{quantityDislikes}}</ion-text>
+        </ion-item>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+
+  <ion-card>
+    <ion-card-header class="publications-header">
+      <ion-card-title class="publications-title">
+        Lista de publicações
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let publication of publicationList">
+          <ion-avatar slot="start">
+            <img [src]="getPublicationBanner(publication)">
+          </ion-avatar>
+          <ion-label text-wrap>
+            <h2>{{publication.title}}</h2>
+            <p>{{publication.message? publication.message : ''}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

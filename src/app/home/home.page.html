@@ -59,8 +59,8 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-          <ion-item>
-            <ion-thumbnail>
+          <ion-item >
+            <ion-thumbnail (click)="goToPublisherDetails(boletim)">
               <img [src]="getIconUrl(boletim)" alt="" />
             </ion-thumbnail>
             <ion-card-header>

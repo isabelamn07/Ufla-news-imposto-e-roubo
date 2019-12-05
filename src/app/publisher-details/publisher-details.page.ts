@@ -4,6 +4,7 @@ import { Publisher } from '../models/publisher.model';
 import { ActivatedRoute } from '@angular/router';
 import { parse } from 'querystring';
 import { PublisherService } from '../services/publisher.service';
+import { Publication } from '../models/publication.model';
 
 @Component({
   selector: 'app-publisher-details',
@@ -13,28 +14,49 @@ import { PublisherService } from '../services/publisher.service';
 export class PublisherDetailsPage implements OnInit {
 
   public publisher: Publisher;
+  public publicationList: Publication[];
+  public quantityLikes: number;
+  public quantityDislikes: number;
   public quantityPublications: number;
   public quantitySubscriptions: number;
+  public quantityComments: number;
   private publisherid: number;
 
-  constructor(private boletimService: BoletimService, 
+  constructor(private boletimService: BoletimService,
     private activatedRoute: ActivatedRoute,
     private publisherService: PublisherService) {
     this.activatedRoute.queryParams.subscribe(param => {
       this.publisherid = parseInt(param.id);
     })
-   }
+  }
 
   async ngOnInit() {
     this.publisher = (await this.boletimService.getPublisherById(this.publisherid))[0];
-    this.quantityPublications = await this.publisherService.getPublicationsQuantityById(this.publisherid);
+
+    let { commentsQuantity, publicationsQuantity } = await this.publisherService.getPublicationsAndCommentsQuantityById(this.publisherid);
+    this.quantityPublications = publicationsQuantity;
+    this.quantityComments = commentsQuantity;
+
     this.quantitySubscriptions = await this.publisherService.getSubscriptionsQuantityById(this.publisherid);
+    this.publicationList = await this.boletimService.getPublicationById(this.publisherid);
+
+    let { dislikes, likes } = await this.publisherService.getPublicationsLikesAndDislikesById(this.publisherid);
+    this.quantityLikes = likes;
+    this.quantityDislikes = dislikes;
   }
 
 
   getIconSrc() {
     if (this.publisher) {
-    return(`/assets/${this.publisher.initials.toLowerCase()}/${this.publisher.icon}`);
+      return (`/assets/${this.publisher.initials.toLowerCase()}/${this.publisher.icon}`);
+    } else {
+      return '';
+    }
+  }
+
+  getPublicationBanner(publication) {
+    if (publication) {
+      return (`assets/${this.publisher.initials.toLowerCase()}/banners/${publication.banner}`);
     } else {
       return '';
     }

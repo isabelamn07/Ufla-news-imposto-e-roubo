@@ -217,4 +217,8 @@ export class HomePage {
   goToDetails(boletim) {
     this.router.navigate(['home/details/:id'], { queryParams: { id: boletim.id } });
   }
+
+  goToPublisherDetails(boletim) {
+    this.router.navigate(['publisher-details/:id'], {queryParams: {id: boletim.publisher.id}})
+  }
 }

@@ -22,7 +22,7 @@ export class CommentsService {
 
   }
 
-  async getQuantityByBoletimId(boletimid): Promise<Number> {
+  async getQuantityByBoletimId(boletimid): Promise<number> {
     let commentList: Comment[] = await this.http.get<Comment[]>(`${API_URL}?publication_id=${boletimid}`).toPromise();
     if (commentList) return commentList.length;
     else return 0;

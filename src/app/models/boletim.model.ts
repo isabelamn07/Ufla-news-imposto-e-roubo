@@ -8,9 +8,3 @@ export interface Boletim extends Publication {
   comment_quantity?: number;
 };
 
-// export class Boletim implements BoletimInterface {
-//   constructor(publisher: Publisher, publication: Publication) {
-//     super(publication);
-//     this.publisher = publisher;
-//   }
-// }

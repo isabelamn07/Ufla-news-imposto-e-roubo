@@ -17,30 +17,46 @@
     }
 }
 
-.info-title {
+.info-card {
+    margin-bottom: 80px;
+
+    .info-title {
+        text-align: center;
+        font-weight: 550;
+        color:whitesmoke
+    }
+    
+    .info-header {
+        background-color: #1c50e2ed;
+    }
+    
+    .info-text {
+        // font-size: 15px;
+        // color: #242524;
+        // font-weight: 550;
+        margin-top: 25px;
+        // display: flex;
+        // flex-direction: column;
+    
+        .num-publications, .num-subs, .num-comments, .num-likes, .num-dislikes {
+            margin-bottom: 10px;
+            font-weight: 600;
+            align-self: center;
+        }
+    
+       
+    }
+}
+
+
+
+.publications-header {
+    background-color: var(--ion-color-primary);
+}
+
+
+.publications-title {
     text-align: center;
     font-weight: 550;
     color:whitesmoke
-}
-
-.info-header {
-    background-color: #1c50e2ed;
-}
-
-.info-text {
-    font-size: 15px;
-    color: #242524;
-    font-weight: 550;
-    margin-top: 25px;
-    display: flex;
-    flex-direction: column;
-
-    .num-publications {
-        flex: 1;
-        margin-bottom: 10px;
-    }
-
-    .num-subs {
-        flex: 1;
-    }
 }
