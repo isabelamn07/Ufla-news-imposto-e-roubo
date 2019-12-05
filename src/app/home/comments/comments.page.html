@@ -14,7 +14,7 @@
   <ion-item-divider>
   </ion-item-divider>
 
-  <div class="comment-container" *ngFor="let comment of commentList">
+  <div [className]="'comment-container-' + i % 2" *ngFor="let comment of commentList; let i = index">
     <div class="header">
       <ion-text class="username">{{comment.username}}</ion-text>
       <div class="delete-container">

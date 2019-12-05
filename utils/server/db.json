@@ -66,7 +66,8 @@
         "usernameList": [
           "pauloafonso"
         ]
-      }
+      },
+      "comment_quantity": 2
     },
     {
       "id": 3,
@@ -187,6 +188,26 @@
         "quantity": 0,
         "usernameList": []
       }
+    },
+    {
+      "message": "teste",
+      "publication_id": 2,
+      "username": "pauloafonso",
+      "when": {
+        "milli": 1575584399597,
+        "date": "05/12/2019"
+      },
+      "id": 5
+    },
+    {
+      "message": "teste",
+      "publication_id": 2,
+      "username": "pauloafonso",
+      "when": {
+        "milli": 1575584401709,
+        "date": "05/12/2019"
+      },
+      "id": 6
     }
   ],
   "subscriptions": [

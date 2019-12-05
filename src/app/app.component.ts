@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AuthService } from './services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { User } from './models/user.model';
 
 @Component({
   selector: 'app-root',

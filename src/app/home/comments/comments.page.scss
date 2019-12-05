@@ -11,13 +11,22 @@
   }
 }
 
-.comment-container {
+.comment-container-0{
   max-width: 50%;
+  margin-left: 10px;
+}
+
+.comment-container-1{
+  margin-left: 40%;
+  max-width: 50%;
+}
+
+.comment-container-0, .comment-container-1 {
   max-height: fit-content;
   padding: 20px;
   background: #0571e6ab;
   margin-top: 10px;
-  margin-left: 10px;
+
   border-radius: 40px;
 
   .header {
