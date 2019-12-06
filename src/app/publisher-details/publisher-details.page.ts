@@ -38,7 +38,7 @@ export class PublisherDetailsPage implements OnInit {
     this.quantityComments = commentsQuantity;
 
     this.quantitySubscriptions = await this.publisherService.getSubscriptionsQuantityById(this.publisherid);
-    this.publicationList = await this.boletimService.getPublicationById(this.publisherid);
+    this.publicationList = await this.publisherService.getPubicationListById(this.publisherid);
 
     let { dislikes, likes } = await this.publisherService.getPublicationsLikesAndDislikesById(this.publisherid);
     this.quantityLikes = likes;

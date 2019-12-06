@@ -72,7 +72,7 @@ export class BoletimService {
   }
 
   async getPublicationById(publicationid: number) {
-    return this.http.get<Publication[]>(`${API_URL}/publications?publisher_id=${publicationid}`).toPromise();
+    return this.http.get<Publication[]>(`${API_URL}/publications?id=${publicationid}`).toPromise();
   }
 
   async updatePublication(newPublication: Publication) {
