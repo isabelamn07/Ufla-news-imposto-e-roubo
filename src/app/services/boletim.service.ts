@@ -27,7 +27,6 @@ export class BoletimService {
   }
 
   async getBoletimListByUser(user: User): Promise <Boletim[]> {
-    console.log("Chegou aqui e o user eh: " + user);
 
     //  let subscriptionList = await this.httpClient.get<Subscription[]>(`${API_URL}/subscriptions?user_id=${user.id}`).toPromise();
     //  console.log("Subscription eh: " + JSON.stringify(subscriptionList));
@@ -45,7 +44,6 @@ export class BoletimService {
         commentList = await this.getCommentsByPublicationId(publication.id);
         let boletim = {...publication, publisher: publisherList[0], commentList, comment_quantity: commentList.length}
         respBoletimList = respBoletimList.concat(<Boletim> boletim);
-        console.log("O boletim eh: "  + JSON.stringify(boletim));
       }
     }
     // return this.httpClient.get<Subscription[]>(`${API_URL}/subscriptions?user_id=${user.id}`)

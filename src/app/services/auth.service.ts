@@ -38,7 +38,6 @@ export class AuthService {
   login(user: User): Promise<AuthResponse> {
     return this.http.post(`${this.AUTH_API}/login`, user).pipe(
       tap(async (res: AuthResponse) => {
-        console.log('resposta login: ' + JSON.stringify(res.user));
         if (res.access_token) {
           await this.storage.set(TOKEN_KEY, res.access_token);
           await this.storage.set(USER_INFO, res.user);
@@ -66,7 +65,6 @@ export class AuthService {
   }
 
   isAuthenticated() {
-    console.log("Chegou no auth");
     return this.authState.value;
   }
 
